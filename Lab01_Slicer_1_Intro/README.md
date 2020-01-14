@@ -5,6 +5,8 @@ Welcome to Slicer Lab #1! :tada::tada::tada:
 Slicer is an open source software platform with a worldwide developwe community. It is being developed right now.
 https://www.slicer.org/
 
+<img src="images/contributions.png">
+
 
 ## Slicer with SlicerMorph 
 
@@ -14,45 +16,47 @@ In this workshop, we will use a custom Slicer with SlicerMorph extension and som
 ## General Application Window and UI
 Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/MainApplicationGUI).
 
-<img src="https://www.slicer.org/w/images/6/6f/Slicer4ApplicationGUIMap.jpg">
+<img src="images/general.gui.png">
 
-* Load & Save (with a special DICOM buttom - stay tuned for Slicer Lab #2) buttons are shortcuts for loading and saving data.
-  * Saving MRB
-* It is all about *modules*. When you first run Slicer, "Welcome to Slicer" module is loaded.
+* Load & Save buttons 
+  * Add Data button - Show Options checkbox. 
+  * Saving MRB - Medical Record Bundle
+* DICOM module which will be covered in detail in lab #2. 
+  
 * Module Selection and Navigation 
-   * the current module 
-   * dropdown list of all available modules
-   * a search functionality
+   * current module 
+  * dropdown list of all available modules
+   * search modules
    * module usage history
    * navigation through module usage history
 
-  :pencil2: Either use search functionality (click on the magnifying glass and start typing) or the drowdown list (Informatics > Sample Data) and find the Sample Data module. Load CT-MRBrain. This will download and load a CT volume and 2 MR volumes.
- 
- <img src="images/sample.data.png">
-   
-   You should see the image in slice views.
-  
-  <img src="images/sample.data2.png">
-  
+  :pencil2: Either use search functionality (click on the magnifying glass and start typing) or the drowdown list (Informatics > Sample Data) and find the Sample Data module. Load CT-MRBrain. This will download and load a CT volume and 2 MR volumes. You should see the image in slice views.
+    
 * Core Modules
 * Layout options: Depending on your job, different Layouts for the visualization are useful. 
    <img src="https://www.slicer.org/w/images/8/82/Slicer4Layouts.jpg">
    
-* Mouse mode (Landmarking / Fiducial Annotation)
+   :pencil2: Change the layout to "Conventional".
+   
+* Mouse modes:
+  * Translate/rotate
+  * Window/Level 
+  * Annotation
+  
+   :pencil2: Adjust the Window/Level of the image globally and auto-adjust by selecting a region (hold down Shift key or select the option from the drow-down menu).
+  
 * Screen Capture
 * Crosshair visibility
 
-* Extension Manager and Phyton Interactor: Beyond the Slicer you downloaded ... Coming up soon.
+* Phyton Interactor: Lab #9 - scripting in Python
 
 ## Views: Slice and 3D
    
-   * 3D Slicer is all about slices and 3D renderings/models (more about them soon). Conventional layout gives you 3 slice views and a 3D rendering (reconstruction) view.
-   * Slices: red (axial: inferior to superior), yellow (sagittal: left to right) and green (coronal: posterior to anterior) slices. Usually data is acquired in one slice (most commonly axial) and the other slices are *reconstructed*. Slice views give you the capability to move through slices using a slider (or the wheel of your mouse). It tells you which slicer you are seeing in the *physical space* (mm).
+   * 3D Slicer is all about slices and 3D renderings/models (more about them in Lab #3 and #4). Conventional layout gives you 3 slice views and a 3D rendering (reconstruction) view.
    
-   <img src="https://www.slicer.org/w/images/f/fc/SliceViewerController-4.1.png">
-   
+   * Slices: red (axial: inferior to superior), yellow (sagittal: left to right) and green (coronal: posterior to anterior) slices. Usually data is acquired in one slice (most commonly axial) and the other slices are *reconstructed*. Slice views give you the capability to move through slices using a slider (or the wheel of your mouse). It tells you which slice you are seeing in the *physical space* (mm).
    * Little *push-pin* on the top-left corner hides a panel of additional functionality. If you hover over it, it shows the panel; if you click on it, it pins the panel so it stays open. 
-   * If you *link* the slices, then changes you make in this panel affects all three slice views. The closed *eye* icon is a symbol for visibility. 
+   * If you *link* the slices, then changes you make in this panel affects all three slice views. The closed *eye* icon is for visibility. 
    * If you click on the eye and open the eye, the slice will be visible in 3D view. If you already linked the slice views, all 3 will be visible in 3D. Go ahead and play with it. Change the slice (using the slider or the mouse wheel) and rotate the 3D view to experiment.
    
    <img src="images/show.slices.png">
@@ -61,108 +65,62 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
    
    :pencil2: Select another volume as your background (MRBrainT1 or CTBrain) and play with the transparency.
    
+## Data Probe
+
+It shows the location of the mouse indicator, the pixel values in the image, label-map (more about this in Lab #3 - segmentation) etc.
+   
 ## Data Module
 
-* Data module, the first shortcut in the Core Modules tab, shows the data in the scene. Subject Hierarchy view, the first tab, shows the data in a structured way as a tree. The more you use Slicer and the more data you produce, it comes handy to keep this clean.
-
-<img src="images/data.module.png">
+* Data module, the first shortcut in the Core Modules tab, shows the data in the scene. Subject Hierarchy view, the first tab, shows the data in a structured way as a tree. 
 
 :pencil2: Let's create a new subject. 
   * Right click on the empty space in the Data Module, and select New Subject.
   * Double click on the name of the subject (or right click and select rename) and give it a name, like Subject_1. You can also rename the Volumes if you'd like.
   * You can drag and drop images in the scene under it if they belong to the same subject. 
-<img src="images/data.module.2.png">
 
 * The eye icon next to the volumes indicate which one is visualized in the slice views. Try changing the volume in the slices by clicking on the (closed) eye icon of another volume. 
 * You can delete data by right clicking and selecting Delete.
 
 ## Volumes Module
 
+* This module allows you to control the appearance of volumes (slice views) and gives you information about the volume. 
+* Note that in any module, the info is given for the "Active Volume" which is not always the volume you are visualizing. 
+* Expand "Volume Information" tab and check dimensions, spacing, origin, and other volume information. More on "volumetric images" in Lecture #2 tomorrow. 
+
+<img src="images/imaging.lecture.png">
+
+* "Display" tab gives you preset Window/Level options and allows manual adjustment (remember Window/Level mouse mode)
+  * Make sure your "Active Volume" matches the volume in Slice Views. 
+  * Hover over the presets and read the descriptions.
+  * Uncheck the "Interpolate" box. What happened?
+
 ## 3D Rendering 
 
-This is only a brief introduction to make sure Volume Rendering works for your Slicer installation and to introduce the capabilities. We will go through the nuts and bolts of Volume Rendering in Lab5.
-
-* The 3D in *3D Slicer*: Volume Rendering.
+This is only a brief introduction to make sure Volume Rendering works for your Slicer installation and to go over the interface. More on Volume Rendering in Lab #4.
 
 :pencil2: Assuming you still have CT and MR data loaded, find the Volume Rendering module from the drop-down list or via search function. 
-  * Select the CTBrain from the dropdown list as the Volume, and click on the closed eye icon next to it to turn it open. Slicer will try to render the volume in 3D view. It will be a solid cylinder as it is the shape of the data acquired from the scanner - you can see it in the red (axial) slice.
+  * Select the CTBrain from the dropdown list as the Volume, and click on the closed eye icon next to it to turn it open. Slicer will try to render the volume in 3D view. It could be a solid cylinder as it is the shape of the data acquired from the scanner - you can see it in the red (axial) slice.
   
-  <img src="images/3d.rendering.png">
+  <img src="images/volume.rendering1.png">
   
-  * OK, we know this is a CT so we want to render bones. Click on the "Select a Preset" dropdown list and select one of the first two options. If you hover, it will say CT-AAA and CT-AAA2. These are presets that will render the volume by assigning nice colors to known bone densities to create a 3D representation of bones. 
+  * We know this is a CT so we want to render bones. Click on the "Preset" dropdown list and select one of the first two options. If you hover, it will say CT-AAA and CT-AAA2. These are presets that will render the volume by assigning nice colors to known bone densities to create a 3D representation of bones. 
   
-  <img src="images/3d.rendering2.png">
+  * Make sure your "Rendering" option is "VTK GPU Ray Casting" - this allows Slicer to use GPU for 3D rendering which is much more efficient and pretty.
   
-  <img src="images/3d.rendering3.png">
-  
-  * Try using your mouse to interact with the rendering in 3D volume. Try right button, left button, wheel, click-and-drag with left,right or wheel. 
+  * Try using your mouse to interact with the rendering in 3D volume. Try right button, left button, wheel, click-and-drag with left, right or wheel. 
   
   * 3D rendering is an art. Under Advanced tab, there are manual keypoints you can adjust to assign transparencies and colors that will render the volume differently. Check Presets first to see if any works for your data. 
 
 * 3D view has a push-pin similar to slice views. It opens a set of controls. You can rotate the view to anterior/posterior/superior etc by using the shortcuts, change projection etc. Explore!
 
-<img src="https://slicer.readthedocs.io/en/latest/_images/ViewControls3D.png">
+  <img src="images/volume.rendering2.png">
 
-* ROI
+  * Always use "Orthographic" projection when you are preparing figures! 
 
-
-## Extension Manager
-Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/ExtensionsManager).
-
-Extensions are packages of modules designed for specific purposes by developers and researchers. They work by adding modules to your Slicer. Good extensions provide examples and tutorials for you to follow in their wiki pages. 
-
-* Click on Extension Manager (a puzzle piece with an E attached to it).
-
-<img src="images/extension.manager.png">
-
-* Under Install Extensions tab, you will see extensions available to specific Slicer version you are using. Manage Extensions tab will show the extensions you already have, and Restore Extensions tab will show the extensions you previously installed in another version but can be restored to the current version. 
-
-<img src="images/install.extensions.png">
-
-:pencil2: Let's install SkullStripper extension (under Segmentation category).
-
-  <img src="images/install.extensions.skull.stripper.png">
-
-  * We need to restart the Slicer. Let's go to Sample Data module and load **MRHead** data this time.
-  * Find the SkullStripper module from the drop-down list (Segmentation > SkullStripper) or using the search functionality. 
-  * This module takes an input volume and creates a brain surface mesh and a brain mask. 
-  * Set the Input Volume to be MRHead, select "Create new Model" and "Create new LabelMapVolume" options for Output brain surface and Brain Mask. Set iterations to 100 and Subdivisions to 15. Click Apply. It should take about 2 minutes to finis.
-
-<img src="images/skull.stripper.png">
-
-  * You should see an approximate brain segmentation and a model in 3D. 
-  
-  <img src="images/skull.stripper2.png">
-  
-### Manually installing extensions
-
-Sometimes there is an experimental module that's being developed that you want to use and test. Or you are developing a module but you don't want to put it in the extension manager just yet. There is a way to add extensions manually from a file. 
-
-:pencil2: Let's add the *experimental* version of SlicerMorph. Sara had added some modules just for you to try! Go ahead and download it from [her github page](https://github.com/smrolfe/SlicerMorph). Save and unzip the file at a location you will remember. 
-
-<img src="images/manual.extensions.png">
-
-* The folder should have a file with the ".s4ext" extension that tells the Slicer that there is an extension living here. All these folders are different modules we will add.
-
-* Now go to the Extension Manager and click on the wrench icon on the upper right corner. It should have one option saying "Install Extension from File", select that one.
-
-<img src="images/manual.extensions2.png">
-
-* Find the zip file and select it. Slicer should *install* the extension. It will show up under Manage Extensions tab.
-
-<img src="images/manual.extensions3.png">
-
-<img src="images/manual.extenstions4.png">
-
-* Unfortunately we are not done. You have to go to the Edit > Application Settings > Modules and add all the directories under that folder you just downloaded as modules. 
-
-<img src="images/manual.extensions5.png">
-
-* Finally, restart Slicer and check the module list, you should see the new folder "Slicer Morph" and all the modules you've just added!
-
-<img src="images/manual.extensions6.png">
-
-
+* ROI (Region Of Interest): You can 3D render a portion of the image by adjusting an ROI box. 
+  * Turn on the "Display ROI" option by clicking on the eye icon. 
+  * Drag the little colorful spheres attached to the faces of the ROI box on either 3D view or slice views to change the box. 
+  * You can reset the box by clicking on the "Fit to Volume" button. 
   
 ## Preferences and Settings
 
@@ -178,7 +136,7 @@ Go to Edit > Application Settings. When you make changes in the settings, little
 
 :pencil2: I use *Volume Rendering* frequently so it is in my Core Modules. Let's add it to the shortcuts. You can thank me later in the workshop. :grin: You can use the arrows to adjust the position of your new shortcut in the menu bar. I like Volume Rendering next to the Volumes module.
    
-<img src="images/app.settings.modules.png">
+<img src="images/module.shortcut.gif">
 
 * Temp folder setting: Where the temporarily files generated by Slicer are kept. By default, this is your OS's temp folder. You can modify this to a folder you can easily find, for example create a folder on your desktop and point to that: Desktop/Temp
 
