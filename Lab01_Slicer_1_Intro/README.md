@@ -5,15 +5,11 @@ Welcome to Slicer Lab #1! :tada::tada::tada:
 Slicer is an open source software platform with a worldwide developwe community. It is being developed right now.
 https://www.slicer.org/
 
-## Preview vs stable versions
-You can download Slicer from [here](https://download.slicer.org/) - Hope you already did :)
 
-<img src="images/stable.vs.nightly.png">
+## Slicer with SlicerMorph 
 
-Stable version: rigorously tested
-Preview version: changes (~nightly) as developers make [changes](https://github.com/Slicer/Slicer/graphs/commit-activity)
+In this workshop, we will use a custom Slicer with SlicerMorph extension and some modifications to existing modules. You can download it from here for Mac and Windows: http://download.slicermorph.org
 
-<img src="images/contributions.png">
 
 ## General Application Window and UI
 Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/MainApplicationGUI).
