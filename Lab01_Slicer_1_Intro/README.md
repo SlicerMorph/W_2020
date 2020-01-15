@@ -153,7 +153,7 @@ Go to Edit > Application Settings. When you make changes in the settings, little
 
 <img src="images/gpu.rendering.png" width="650">
 
-:pencil2: Make all of the above changes in settings menu. Restart Slicer. Download "CT-MR Brain" dataset from "Sample Data" module again. Go check the Temp and Temp/RemoteIO folder you created on Desktop. What's in there?
+:pencil2: Make all of the above changes in settings menu. Restart Slicer. Find "Sample Data" module, download "MRHead" dataset. Go check the Temp and Temp/RemoteIO folder you created on Desktop. What's in there?
 
 
 ## Log File and Reporting a Bug
