@@ -9,9 +9,31 @@
     install.packages('geomorph')
     install.packages('Morpho')
     ```
-* review S licerMorph output files and contents
-* import/export data into R (read.csv, read.table)
-* intro to geomorph/Morpho (Morpho::read.fcsv to import data from Slicer)
+* Run SlicerMorph/GPA module on Gorilla dataset in Slicer.
+    
+## Brief Introduction to R and RStudio
+
+<img src="images/rstudio.png">
+
+A useful website if you want to study on your own: [stat545](https://stat545.com/r-basics.html)
+
+## SlicerMorph outputs
+
+This is where you left Gorilla example. If you want, re-run it and note the output directory.
+
+<img src="images/gorilla.example.png">
+
+Open the output directory and look at the results. What are these files?
+
+<img src="images/gorilla.example2.png">
+
+
+## Import/Export Data into R 
+* (read.csv, read.table)
+
+## Intro to Geomorph/Morpho 
+* Morpho::read.fcsv to import data from Slicer
 * rerun the gorilla skulls sample dataset in geomorph and compare results.
+
 
 ### Please open the Exercise.Rmd in Rstudio and follow the tutorial.
