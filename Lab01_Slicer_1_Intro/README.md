@@ -23,14 +23,16 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
   * Saving MRB - Medical Record Bundle
 * DICOM module which will be covered in detail in lab #2. 
   
+:pencil2: Use "Add Data" button, locate the data you copied in pre-lab, and add "CT-brain.nrrd" to your workspace. Once done, minimize Slicer, open a file explorer and locate the data folder from pre-lab. Drag-and-drop "MR-brain-T1.nrrd" and "MR-brain-T2.nrrd" into Slicer. Add them to your workspace. 
+
+:pencil2: Save a MRB of your workspace on your Desktop. Include all files. Clear your workspace by closing the scene (File > Close Scene or Ctrl+w). Load MRB by using "Add Data" button or drag-and-drop functionality. Is everything there?
+  
 * Module Selection and Navigation 
    * current module 
-  * dropdown list of all available modules
+   * dropdown list of all available modules
    * search modules
    * module usage history
    * navigation through module usage history
-
-  :pencil2: Either use search functionality (click on the magnifying glass and start typing) or the drowdown list (Informatics > Sample Data) and find the Sample Data module. Load CT-MRBrain. This will download and load a CT volume and 2 MR volumes. You should see the image in slice views.
     
 * Core Modules
 * Layout options: Depending on your job, different Layouts for the visualization are useful. 
