@@ -168,14 +168,14 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/Nightly/Report_a_proble
   * To report a bug go Help > Report a bug. Copy the related log entries and provide it with the description of your problem. This window also gives you a link to the [Slicer Discourse](https://discourse.slicer.org) or [3D Slicer bugtracker](https://issues.slicer.org/) for reporting bugs.
 
 ## Helping Yourself
-* Sample Data module
 * [Keyboard shortcuts and mouse keys](https://www.slicer.org/wiki/Documentation/Nightly/SlicerApplication/MouseandKeyboardShortcuts)
 * [Slicer FAQ](https://www.slicer.org/wiki/Documentation/Nightly/FAQ)
 * [Slicer tutorials](https://www.slicer.org/wiki/Documentation/Nightly/Training)
 * [Maga lab Specific tutorials](https://blogs.uw.edu/maga/)
-* discourse forum for unanswered questions (an example of good question) 
-
-* youtube channels (SlicerMorph and perklab)
-
+* [Slicer Discourse](https://discourse.slicer.org) example questions
+   * [1](https://discourse.slicer.org/t/slicer-is-not-showing-in-3d-view/9699) Details details details
+   * [2](https://discourse.slicer.org/t/filling-holes-in-a-skull/9815) Describe what you've tried so far before asking how to do something
+   * [3](https://discourse.slicer.org/t/shading-changes-with-default-orientation-buttons-at-different-zooms/8907) Investigate bugs and report them clearly
+* youtube channels
    http://bit.ly/SM_youtube  
    https://www.youtube.com/user/PerkLabResearch  
