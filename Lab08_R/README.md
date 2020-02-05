@@ -15,7 +15,10 @@
 
 <img src="images/rstudio.png">
 
-A useful website if you want to study on your own: [stat545](https://stat545.com/r-basics.html)
+Intro R resources:
+- [stat545](https://stat545.com/r-basics.html)
+- [Student's Guide to R](https://cran.r-project.org/doc/contrib/Horton+Pruim+Kaplan_MOSAIC-StudentGuide.pdf)
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
 ## SlicerMorph outputs
 
