@@ -14,7 +14,9 @@ Lectures, labs and all documents associated with 3D Morphometrics workshop at FH
 Your laptop should be running windows 10 (windows 7 has issues and is not supported anymore), or Mac OS 10.11 (El Capitan) or later.  A recent version of a common Linux distribution (like Ubuntu or CentOS) is also fine.
 Please note that segmentation is a memory intensive operation. It is suggested, you have 6-10X more memory than your full dataset size (i.e., if you are working on a 1024x1024x1024 dataset, you will need about 10GB RAM to work on in in Slicer). You can always reduce your dataset to match your hardware capacity.
 
-**Required software:** You should have these software install these on your laptops before coming to workshop.
+## Required software: 
+You should have these software install these on your laptops before coming to workshop.
+
 1.	We will use a customized version of 3D Slicer with all the tools we need pre-loaded. Please download it for your OS from http://download.slicermorph.org and follow the instructions in the pdf file. 
 2.	Download and install git from https://git-scm.com/downloads 
 3.	Download and install R 3.6.2 from https://cran.r-project.org/
