@@ -1,0 +1,257 @@
+---
+title: "Shape Modelling in R"
+output: rmarkdown::html_vignette
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(rgl)
+#knit_hooks$set(webgl = hook_webgl)
+
+```
+
+## Load Packages
+```{r loading,message=FALSE}
+require(Morpho)
+require(RvtkStatismo)
+require(rgl)
+require(Rvcg)
+```
+
+## Load some example data
+
+```{r, eval=T}
+lmfiles <- list.files("Data/Gorilla_Skull_LMs",full.names = T,pattern = ".fcsv")
+
+## create a list containing the landmark matrices
+mylms <- lapply(lmfiles,read.fcsv)
+## convert them to a 3D array
+mylmarr <- list2array(mylms)
+```
+
+## run a Procrustes alignment to the first specimen WITHOUT scaling
+you can also use ```Morpho::procSym``` or ```geomorph::gpagen``` functions
+
+```{r alignment}
+lmaligned <- rigidAlign(mylmarr,reference = 1)
+```
+
+## Load the template data
+```{r template data}
+template <- read.vtk("./Data/template/Gor_template_low_res.vtk")
+template.lm <- read.fcsv("./Data/template/Gorilla_template_LM1.fcsv")
+```
+
+## Let's create our very first statistical shape model and explore it
+
+
+```{r rvtkstatismo}
+gorillamod <- statismoBuildModel(lmaligned$rotated)
+print(gorillamod)
+```
+
+### Save to disk and load it 
+
+```{r IO}
+## save to disk
+statismoSaveModel(gorillamod) # if filename ist not specified, the object's name is used
+
+## load it
+gorillamod <- statismoLoadModel("gorillamod.h5")
+```
+
+
+### Get some infos about our model
+
+***RvtkStatismo*** wraps all functions of the original statismo API and here are a few that deal with getting information about our model
+
+
+```{r explore}
+GetDomainSize(gorillamod)
+
+GetNumberOfPrincipalComponents(gorillamod)
+
+## Get a matrix containing the PC-scores, if scaled=FALSE, these will not be scaled to unit SD
+PCscores <- GetPCScores(gorillamod)
+
+## Get the coefficients in the (scaled) PC-space
+ComputeCoefficients(gorillamod,lmaligned$rotated[,,1])
+
+## This gives us the estimated coefficients when providing (a subset) of some aligned landmarks
+ComputeCoefficientsForPointValues(gorillamod,lmaligned$rotated[-1,,1],2:nrow(template.lm)
+                                  ,ptNoise=1)
+
+## As the latter call is missing one landmark, we can see the 
+## differences starting at the 4th coefficient
+
+
+## In case we are interested in the PC-Basis vectors, we can obtain them either scaled or as orthonormal matrix
+OrthoBasis <- GetOrthonormalPCABasisMatrix(gorillamod)
+BasisScaled <- GetPCABasisMatrix(gorillamod)
+```
+
+
+### To reduce noise, we can reduce the number of PCs contained in the model
+
+```{r redVar}
+## here we only use the PCs accounting for 90% of the sample's variance
+gorillamodRed <- statismoReducedVariance(gorillamod,exVar = .9) 
+GetNumberOfPrincipalComponents(gorillamodRed)
+```
+
+
+### Sample from the model
+* `DrawMean` returns the model's mean shape with respect to the representation (matrix/3D-mesh)
+* The function `DrawSample` allows either to randomly draw samples from our distribution or to specifically select by providing the (scaled) PC-scores.
+```{r sampling}
+## get the mean shape
+gorillaMean <- DrawMean(gorillamod)
+
+## Get info about a single point only 
+meanPoint1 <- DrawMeanAtPoint(gorillamod,pt=1)
+## in case we were dealing with a surface mesh this would be a 3D mesh instead of a matrix
+## in that case we could call
+gorillaMean <- GetDomainPoints(gorillamod)
+
+## generate a list of random samples
+randomshapes <- lapply(1:10, function(x) x <- DrawSample(gorillamod))
+
+## Draw sample at +-3sd of the first PC 
+gorillaPC1_sd3 <- DrawSample(gorillamod,coefficients = c(3))
+gorillaPC1_sdNeg3 <- DrawSample(gorillamod,coefficients = c(-3))
+
+## visualize - as we didn't remove size, this mainly shows isotropic variation
+deformGrid3d(gorillaPC1_sdNeg3,gorillaPC1_sd3) 
+
+## Now do the same for the second PC
+gorillaPC2_sd3 <- DrawSample(gorillamod,coefficients = c(0,3))
+gorillaPC2_sdNeg3 <- DrawSample(gorillamod,coefficients = c(0,-3))
+deformGrid3d(gorillaPC2_sdNeg3,gorillaPC2_sd3,ngrid = 20) 
+
+## In case we are only interested in one specific coordinate (e.g. the first), we can also call
+## DrawSampleAtPoint. Here we add the results to the plot
+spheres3d(DrawSampleAtPoint(gorillamod,coefficients = c(0,3),pt=1),radius=2,col="orange")
+spheres3d(DrawSampleAtPoint(gorillamod,coefficients = c(0,-3),pt=1),radius=2,col="orange")
+
+```
+
+
+## Create a posterior model based on partial information
+In this example (for the sake of simplicity), we simply assume that the first landmark from the template is missing
+```{r posterior model 1}
+## select the first specimen and remove the first landmark
+specimen1Missing1 <- lmaligned$rotated[-1,,1]
+specimen1M2Mod <- align2domain(gorillamod,sample=specimen1Missing1,
+                               ptDomain= 2:nrow(template.lm))
+
+gorillaPostMod <- statismoConstrainModel(gorillamod,sample =specimen1M2Mod,
+                                         pt=2:GetDomainSize(gorillamod),ptValueNoise = .5)
+
+## Draw Samples from the Posterior Model and compare it with the original one
+for (i in 1:50) points3d(DrawSample(gorillaPostMod),col=rainbow(50)[i]) 
+spheres3d(lmaligned$rotated[,,1],col=3)
+
+
+```
+
+
+## Prediction of specimens not included in the SSM
+In a real-world case, we are facing the additional step of aligning the predictor landmarks to the model. Her, we simply align it by the corresponding landmarks
+
+```{r posterior model 2}
+## use the template as new case
+templateMissing <- template.lm[-1,]
+
+## align it to the model space
+templateMissingAlign <- align2domain(gorillamod,sample=templateMissing,
+                                     ptDomain= 2:nrow(template.lm))
+## generate the posterior model and sample from it
+gorillaPostMod2 <- statismoConstrainModel(gorillamod,sample =templateMissingAlign,
+                                          pt=2:nrow(template.lm),ptValueNoise = .5)
+for (i in 1:50) points3d(DrawSample(gorillaPostMod2),col=rainbow(50)[i]) 
+## align the template to the model based on the partial alignment
+trafo <- computeTransform(templateMissingAlign,templateMissing)
+template2Model <- applyTransform(template.lm,trafo)
+spheres3d(template2Model,col=3)
+
+## In cas e we want to go with the most likely prediction, we simply chose the 
+## mean of the constrained model
+mypred <- DrawMean(gorillaPostMod2)
+
+## Note: In case we are only interested in the posterior mean, we can use the function
+## PredictSample(). It also allows for an alignment. The resulting shape is in its original 
+## spatial position
+mypred2 <- PredictSample(gorillamod,lmModel=GetDomainPoints(gorillamod)[2:GetDomainSize(gorillamod),],lmDataset=templateMissing,align=T)
+
+### compute the LogProbability of this shape
+ComputeProbabilityOfDataset(gorillamod,mypred)
+## that doesn't tell us a lot, rather we like some p-value based on the Mahalanobis-distance
+mahadist <- ComputeMahalanobisDistance(gorillamod,mypred)
+## Get a p-value based on the squared mahalanobis distance: 
+pchisq(mahadist^2,df=GetNumberOfPrincipalComponents(gorillamod),lower.tail = FALSE)
+
+## or simply:
+getDataLikelihood(mypred,gorillamod)
+
+### Get the estimation error for each landmark
+perLMError <- sqrt(rowMeans((mypred-template2Model)^2))
+perLMError[1]
+
+## so the prediction error is ~2.86mm
+## visualize it using a heatmap
+meshDist(mypred,distvec=perLMError)
+```
+
+
+### Gaussian Process Models
+
+```{r GPmodels, message=F}
+## We first decimate our template mesh
+require(Rvcg)
+templateDec <- vcgQEdecim(template,percent = .3)
+mykernel <- GaussianKernel(50,50)
+mykernel <- SumKernels(GaussianKernel(10,10),mykernel)
+mykernel <- SumKernels(mykernel,IsoKernel(x=templateDec))
+gpMod <- statismoModelFromRepresenter(templateDec,kernel=mykernel,ncomp = 50,nystroem = 500)
+GetDomainSize(gpMod)
+for (i in 1:3) wire3d(DrawSample(gpMod),col=rainbow(3)[i])
+
+## Now we predict a shape based on our first specimen's landmarks
+pred1 <- PredictSample(gpMod,lmDataset=mylmarr[,,1],lmModel=template.lm,align=T,ptValueNoise=1)
+shade3d(pred1,col="orange")
+spheres3d(mylmarr[,,1])
+```
+
+
+Now we are building a Gaussian Process Model by combining 2 Kernels:
+1. A Gaussian Kernel
+2. A Kernel for isotropic scaling
+
+```{r model fitting}
+
+ require(mesheR)
+##load the data     
+ref <- read.vtk("Data/Femur/VSD001_femur.vtk")
+tar <- read.vtk("Data/Femur/VSD002_femur.vtk")
+ref.lm <- as.matrix(read.csv("Data/Femur/VSD001-lm.csv",row.names=1,header = FALSE))
+tar.lm <- as.matrix(read.csv("Data/Femur/VSD002-lm.csv",row.names=1,header = FALSE))
+## align target to reference
+trafo <- computeTransform(ref.lm,tar.lm)
+tarRot <- applyTransform(tar,trafo)
+tarRot.lm <- applyTransform(tar.lm,trafo)
+
+Kernels <- SumKernels(GaussianKernel(50,50),IsoKernel(0.1,ref))
+## create a GP Model
+mymod <- statismoModelFromRepresenter(ref,kernel=Kernels,ncomp = 100)
+
+## constrain the model to the landmarks
+mymodC <- RvtkStatismo::statismoConstrainModel(mymod,tarRot.lm,ref.lm,2)
+
+fit <- modelFitting(mymodC,tarRot,iterations = 15)
+
+## visualize the fitting error
+wire3d(tarRot,col="white")
+meshDist(fit$mesh,tarRot,add=T,tol=.5)
+```
