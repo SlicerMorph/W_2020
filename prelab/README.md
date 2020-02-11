@@ -2,7 +2,7 @@
 Please complete these tasks when you arrive on the island, during the time dedicated to prelab. 
 
 1. ## Setting up your computer with software:
-If you haven't installed the required software prior to arriving FHL, please do so during this prelab session. Required software is listed on the top level of the course repository. 
+If you haven't installed the required software prior to arriving FHL, please do so during this prelab session. [Required software is listed on the top level of the course repository.](https://github.com/SlicerMorph/W_2020#computer-and-software-instructions-for-the-3d-morphometrics-workshop)
 
 2. ## Copy the contents of the USB drive you will find in the dining hall to your desktop. 
 
