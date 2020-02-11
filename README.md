@@ -14,7 +14,7 @@ Lectures, labs and all documents associated with 3D Morphometrics workshop at FH
 Your laptop should be running windows 10 (windows 7 has issues and is not supported anymore), or Mac OS 10.11 (El Capitan) or later.  A recent version of a common Linux distribution (like Ubuntu or CentOS) is also fine.
 Please note that segmentation is a memory intensive operation. It is suggested, you have 6-10X more memory than your full dataset size (i.e., if you are working on a 1024x1024x1024 dataset, you will need about 10GB RAM to work on in in Slicer). You can always reduce your dataset to match your hardware capacity.
 
-## Required software: 
+## Required software and data
 You should have these software install these on your laptops before coming to workshop.
 
 1.	We will use a customized version of 3D Slicer with all the tools we need pre-loaded. Please download it for your OS from http://download.slicermorph.org and follow the instructions in the pdf file. 
@@ -22,6 +22,7 @@ You should have these software install these on your laptops before coming to wo
 3.	Download and install R 3.6.2 from https://cran.r-project.org/
 4.	Download and install Rstudio Desktop from https://www.rstudio.com/products/rstudio/download/
 5.	Docker Desktop (for Mac and Windows) https://www.docker.com/products/docker-desktop (If you have windows 10 Home, or an older Mac, you will need to install Docker Toolbox. Please read the instructions at https://docs.docker.com/toolbox/toolbox_install_windows/. 
+6.  [Follow the instructions to download the docker image and example datasets](https://github.com/SlicerMorph/W_2020/docker.md). We strongly encourage you to complete these steps prior to arriving to FHL. 
 
 **Additional software:** We will not use them for the workshop specifically, but you might find them useful for specific tasks:
 1.	Drishti (mac and windows only); https://github.com/nci/drishti/releases
