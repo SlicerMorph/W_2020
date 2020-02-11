@@ -28,7 +28,9 @@ docker run -dp 8080:8080 --name fhl mmaga/antsr
 
 <img src="images/docker_X11.PNG">
 
+# Download the Sample Data to be used during the workshop
 
+These are additional datasets that we may use during the workshop. Please download the full folder as a zip file to your computer. https://app.box.com/s/b67kkwc8od43u8lmiuzw01ns5gwc5fcq
 
 
 
