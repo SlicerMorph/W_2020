@@ -8,9 +8,11 @@ https://www.slicer.org/
 <img src="images/contributions.png">
 
 
-## Slicer with SlicerMorph 
+## Slicer versus SlicerMorph 
 
-In this workshop, we will use a custom Slicer with SlicerMorph extension and some modifications to existing modules. You can download it from here for Mac and Windows: http://download.slicermorph.org
+In this workshop, we will use a custom Slicer with SlicerMorph extension and some modifications to existing modules. You can download it for Mac and Windows from: http://download.slicermorph.org. If you are a linux user, there is a PDF in the same URL that recounts the steps you need to do to obtain a customized SlicerMorph for Linux. 
+
+Except for our geometric morphometrics modules, there is no difference between Slicer and SlicerMorph. We pre-bundle our tools and some useful other extensions with SlicerMorph so that installation steps are easier for you and you can immediately begin working with your data. Also, we test our tools more extensively against the Slicer version we customize. This makes sure that any development changes to the 3D Slicer does not break our functionality. We plan to update SlicerMorph in six months cycles so that the new futures added to Slicer are also incorporate to SlicerMorph.
 
 
 ## General Application Window and UI
@@ -22,6 +24,7 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
   * Add Data button - Show Options checkbox. 
   * Saving MRB - Medical Record Bundle
 * DICOM module which will be covered in detail in lab #2. 
+* SlicerMorph's ImageStacks module is the prefered way to load data from mCT scanner (will be covered in detail in lab #2).
   
 :pencil2: Use "Add Data" button, locate the data you copied in pre-lab, and add "CT-brain.nrrd" to your workspace. Once done, minimize Slicer, open a file explorer and locate the data folder from pre-lab. Drag-and-drop "MR-brain-T1.nrrd" and "MR-brain-T2.nrrd" into Slicer. Add them to your workspace. 
 
