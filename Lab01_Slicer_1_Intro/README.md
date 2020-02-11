@@ -12,8 +12,9 @@ https://www.slicer.org/
 
 In this workshop, we will use a custom Slicer with SlicerMorph extension and some modifications to existing modules. You can download it for Mac and Windows from: http://download.slicermorph.org. If you are a linux user, there is a PDF in the same URL that recounts the steps you need to do to obtain a customized SlicerMorph for Linux. 
 
-Except for our geometric morphometrics modules, there is no difference between Slicer and SlicerMorph. We pre-bundle our tools and some useful other extensions with SlicerMorph so that installation steps are easier for you and you can immediately begin working with your data. Also, we test our tools more extensively against the Slicer version we customize. This makes sure that any development changes to the 3D Slicer does not break our functionality. We plan to update SlicerMorph in six months cycles so that the new futures added to Slicer are also incorporate to SlicerMorph.
+Except for our geometric morphometrics modules, there is no functional difference between Slicer and SlicerMorph. We pre-bundle our tools and some useful other extensions with SlicerMorph so that installation steps are easier for you and you can immediately begin working with your data. Also, we test our tools more extensively against the Slicer version we customize. This makes sure that any development changes to the 3D Slicer does not break our functionality. We plan to update SlicerMorph in six months cycles so that the new futures added to Slicer are also incorporate to SlicerMorph.
 
+Another benefit of SlicerMorph is that it is a portable installation. You can copy the root folder of the SlicerMorph to a USB drive and run from it on a new computer without having to install on it.
 
 ## General Application Window and UI
 Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/MainApplicationGUI).
@@ -24,7 +25,7 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
   * Add Data button - Show Options checkbox. 
   * Saving MRB - Medical Record Bundle
 * DICOM module which will be covered in detail in lab #2. 
-* SlicerMorph's ImageStacks module is the prefered way to load data from mCT scanner (will be covered in detail in lab #2).
+* SlicerMorph's **ImageStacks** module is the prefered way to load data from mCT scanner (will be covered in detail in lab #2).
   
 :pencil2: Use "Add Data" button, locate the data you copied in pre-lab, and add "CT-brain.nrrd" to your workspace. Once done, minimize Slicer, open a file explorer and locate the data folder from pre-lab. Drag-and-drop "MR-brain-T1.nrrd" and "MR-brain-T2.nrrd" into Slicer. Add them to your workspace. 
 
@@ -158,6 +159,8 @@ Go to Edit > Application Settings. When you make changes in the settings, little
 
 :pencil2: Make all of the above changes in settings menu. Restart Slicer. Find "Sample Data" module, download "MRHead" dataset. Go check the Temp and Temp/RemoteIO folder you created on Desktop. What's in there?
 
+## Extensions and Extension mechanism
+3D Slicer contains an extension mechanism to download new extensions that adds to the core functionality of Slicer. We have bundled with SlicerMorph with some of the extensions that we find most useful (i.e., RawImageGuess, Lights, Fiducial Registration, SegmentEditorExtraEffects etc), as well as our own extension and morphometric tools. As such, the extension manager is disabled in SlicerMorph by default. You can enable it from the Preferences menu, however you should be aware  that enabling it may create a conflict with the existing pre-installed modules, and we discourage you doing it. If you do want to try a new extension that is not pre-bundled with SlicerMorph, download and install a new preview version of 3D Slicer and install that extension within that version. 
 
 ## Log File and Reporting a Bug
 Related [wiki](https://www.slicer.org/wiki/Documentation/Nightly/Report_a_problem)
