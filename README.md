@@ -38,7 +38,7 @@ You should have these software install these on your laptops before coming to wo
 **Important Websites:**
 
 *	SlicerMorph project website: https://SlicerMorph.github.io
-*	Summer Workshop lectures and labs https://github.com/SlicerMorph/W_2020
+*	Workshop lectures and labs https://github.com/SlicerMorph/W_2020. Please review the [Self-Paced Prelab contents either on Sunday afternoon when you arrive at FHL, or prior to trip](https://github.com/SlicerMorph/W_2020/tree/master/prelab)
 * Link to the file dropbox to upload your lightning talks (or any other data) https://faculty.washington.edu/maga/data_dropbox/
 
 #### Funding acknowledgement
