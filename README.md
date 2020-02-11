@@ -21,7 +21,7 @@ You should have these software install these on your laptops before coming to wo
 2.	Download and install git from https://git-scm.com/downloads 
 3.	Download and install R 3.6.2 from https://cran.r-project.org/
 4.	Download and install Rstudio Desktop from https://www.rstudio.com/products/rstudio/download/
-5.	Docker Desktop (for Mac and Windows) https://www.docker.com/products/docker-desktop 
+5.	Docker Desktop (for Mac and Windows) https://www.docker.com/products/docker-desktop (If you have windows 10 Home, or an older Mac, you will need to install Docker Toolbox. Please read the instructions at https://docs.docker.com/toolbox/toolbox_install_windows/. 
 
 **Additional software:** We will not use them for the workshop specifically, but you might find them useful for specific tasks:
 1.	Drishti (mac and windows only); https://github.com/nci/drishti/releases
