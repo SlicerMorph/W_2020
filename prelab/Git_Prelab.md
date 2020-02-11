@@ -1,5 +1,5 @@
-# Lab 01 Tools for reproducible research
-### Date: 08/26
+# Tools for reproducible research
+### Date: 02/17
 ### Time: 45 minutes
 
 ## Objectives 
