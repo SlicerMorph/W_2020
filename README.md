@@ -38,6 +38,7 @@ You should have these software install these on your laptops before coming to wo
 
 **Important Websites:**
 
+* Sample Data to be used in labs: https://app.box.com/s/p356vlvglk2t6phv0t3soj82xw21xwch
 *	SlicerMorph project website: https://SlicerMorph.github.io
 *	Workshop lectures and labs https://github.com/SlicerMorph/W_2020. Please review the [Self-Paced Prelab contents either on Sunday afternoon when you arrive at FHL, or prior to trip](https://github.com/SlicerMorph/W_2020/tree/master/prelab)
 * Link to the file dropbox to upload your lightning talks (or any other data) https://faculty.washington.edu/maga/data_dropbox/
