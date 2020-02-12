@@ -13,7 +13,7 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 * [pixel coordinates vs physical coordinates](https://www.slicer.org/wiki/Coordinate_systems)
 
 ## Image Import Examples
-* **Import non-DICOM image sequences using `ImageStacks` module**
+### Import non-DICOM image sequences using `ImageStacks` module
 
 `ImageStacks` is a generic tool that can be used to import image sequences from mCT, MR, OPT or 3D microscopy (e.g., lightsheet or confocal).
 
@@ -34,7 +34,8 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 <img src='images/Volumes1.PNG'>
 
 
-* **Import non-DICOM image sequences from Bruker\Skyscan using `SkyScanReconImport` module**
+### Import non-DICOM image sequences from Bruker\Skyscan using `SkyScanReconImport` module
+
 1. Switch to `SkyScanReconImport` module.
 2. Click the `...` button to navigate to the log file from the archive.
 3. Hit Apply.
@@ -48,7 +49,8 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 <img src='images/Volumes2.PNG'>
 
 
-* **Import a DICOM image Sequence**
+### Import a DICOM image Sequence
+
 DICOM datasets should imported using the `DICOM` module. You can find extensive information about the `DICOM` module functionality at https://www.slicer.org/wiki/Documentation/Nightly/Modules/DICOM. Here we are providing a brief overview. 
 From the sample data on your computer that you downloaded prior to the workshop (Gorilla_Skulls), locate this subfolder and file:
 **Gorilla_Skulls/DICOM_samples/Smithsonian_Gorilla_Skull.zip** and unzip the sample DICOM sequence to convenient location on your computer (e.g., Desktop)
