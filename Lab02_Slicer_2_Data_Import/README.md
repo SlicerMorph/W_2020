@@ -21,6 +21,13 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 5. Enter the voxel spacing information. (Browse the log file for this information)
 5. Create a new volume node to contain this scan. 
 
+<img src='images/ImageStacks1.PNG'>
+
+7. Review the resultant image using the `Volumes` module.
+
+<img src='images/Volumes1.PNG'>
+
+
 * **Import non-DICOM image sequences from Bruker\Skyscan using `SkyScanReconImport` module**
 1. Switch to `SkyScanReconImport` module.
 2. Click the `...` button to navigate to the log file from the archive.
