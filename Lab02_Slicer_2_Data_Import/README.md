@@ -13,8 +13,21 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 * [pixel coordinates vs physical coordinates](https://www.slicer.org/wiki/Coordinate_systems)
 
 ## Image Import Examples
-* **Import non-DICOM image sequences**
-Go to the `Sample Data` module of SlicerMorph, scroll down to find the 
+* **Import non-DICOM image sequences using `ImageStacks` module**
+1. Go to the `Sample Data` module of SlicerMorph, scroll down to find the SlicerMorph section of the `Sample Data` module 
+2. Click on the **Bruker\SkyScan mCT Recon import** button to download the zip file into your SlicerMorph Cache folder. 
+3. Unzip the contents of the archive to convenient location. Note that there is log file **P0_2_Rec.log** that contains important information about the scan. 
+4. Switch to `ImageStacks` module and choose the files to import into SlicerMorph. 
+5. Enter the voxel spacing information. (Browse the log file for this information)
+5. Create a new volume node to contain this scan. 
+
+* **Import non-DICOM image sequences from Bruker\Skyscan using `SkyScanReconImport` module**
+1. Swrch to `SkyScanReconImport` module.
+2. Click the `...` button to navigate to the log file from the archive.
+3. Hit Apply.
+:pencil2: `SkyScanReconImport` works only for unmodified image stacks from Nrecon software. 
+
+
 * **Import a DICOM image Sequence**
 From the sample data on your computer that you downloaded prior to the workshop (Gorilla_Skulls), locate this folder:
 **Gorilla_Skulls/DICOM_samples/Smithsonian_Gorilla_Skull.zip** and unzip the sample DICOM sequence to convenient location on your computer (e.g., Desktop)
