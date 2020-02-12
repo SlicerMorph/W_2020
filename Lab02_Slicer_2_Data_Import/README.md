@@ -14,8 +14,14 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 
 ## Image Import Examples
 * **Import non-DICOM image sequences using `ImageStacks` module**
+
+`ImageStacks` is a generic tool that can be used to import image sequences from mCT, MR, OPT or 3D microscopy (e.g., lightsheet or confocal).
+
 1. Go to the `Sample Data` module of SlicerMorph, scroll down to find the SlicerMorph section of the `Sample Data` module 
 2. Click on the **Bruker\SkyScan mCT Recon import** button to download the zip file into your SlicerMorph Cache folder. 
+
+<img src='images/SampleData.PNG'>
+
 3. Unzip the contents of the archive to convenient location. Note that there is log file **P0_2_Rec.log** that contains important information about the scan. 
 4. Switch to `ImageStacks` module and choose the files to import into SlicerMorph. 
 5. Enter the voxel spacing information. (Browse the log file for this information)
@@ -43,8 +49,22 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 
 
 * **Import a DICOM image Sequence**
-From the sample data on your computer that you downloaded prior to the workshop (Gorilla_Skulls), locate this folder:
+DICOM datasets should imported using the `DICOM` module. You can find extensive information about the `DICOM` module functionality at https://www.slicer.org/wiki/Documentation/Nightly/Modules/DICOM. Here we are providing a brief overview. 
+From the sample data on your computer that you downloaded prior to the workshop (Gorilla_Skulls), locate this subfolder and file:
 **Gorilla_Skulls/DICOM_samples/Smithsonian_Gorilla_Skull.zip** and unzip the sample DICOM sequence to convenient location on your computer (e.g., Desktop)
+
+1. Open the `DICOM` module, you may receive a warning message about a DICOM Browser database creation and are asked to create folder to store the database. 
+
+<img src='images/Dicom1.PNG'>
+
+2. Click on the **Import DICOM files** button and navigate to the folder that contains the Gorilla skull DICOMs. It will parse contents (may take a while), and eventually you should see a database view that shows Patient Name field as USNM599167. At this point the DICOM sequence is imported into the DB, but haven't loaded into the Slicer yet. Highlight series #2, Cranium1-1 and click load.
+
+<img src='images/Dicom2.PNG'>
+
+
+
+
+
 
 
 * **Obtaining sample data from MorphoSource.**### 
