@@ -24,8 +24,8 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
 * Load & Save buttons 
   * Add Data button - Show Options checkbox. 
   * Saving MRB - Medical Record Bundle
-* DICOM module which will be covered in detail in lab #2. 
-* SlicerMorph's **ImageStacks** module is the prefered way to load data from mCT scanner (will be covered in detail in lab #2).
+* ``DICOM`` module which will be covered in detail in lab #2. 
+* SlicerMorph's ``ImageStacks`` module is the prefered way to load data from mCT scanner (will be covered in detail in lab #2).
   
 :pencil2: Use "Add Data" button, locate the data you copied in pre-lab, and add "CT-brain.nrrd" to your workspace. Once done, minimize Slicer, open a file explorer and locate the data folder from pre-lab. Drag-and-drop "MR-brain-T1.nrrd" and "MR-brain-T2.nrrd" into Slicer. Add them to your workspace. 
 
@@ -74,21 +74,21 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
 
 It shows the location of the mouse indicator, the pixel values in the image, label-map (more about this in Lab #3 - segmentation) etc.
    
-## Data Module
+## ``Data`` Module
 
-* Data module, the first shortcut in the Core Modules tab, shows the data in the scene. Subject Hierarchy view, the first tab, shows the data in a structured way as a tree. 
+* ``Data`` module, the first shortcut in the Core Modules tab, shows the data in the scene. Subject Hierarchy view, the first tab, shows the data in a structured way as a tree. 
 
 :pencil2: Let's create a new subject. 
-  * Right click on the empty space in the Data Module, and select New Subject.
+  * Right click on the empty space in the ``Data`` Module, and select New Subject.
   * Double click on the name of the subject (or right click and select rename) and give it a name, like Subject_1. You can also rename the Volumes if you'd like.
   * You can drag and drop images in the scene under it if they belong to the same subject. 
 
 * The eye icon next to the volumes indicate which one is visualized in the slice views. Try changing the volume in the slices by clicking on the (closed) eye icon of another volume. 
 * You can delete data by right clicking and selecting Delete.
 
-## Volumes Module
+## ``Volumes`` Module
 
-* This module allows you to control the appearance of volumes (slice views) and gives you information about the volume. 
+* ``Volumes`` module allows you to control the appearance of volumes (slice views) and gives you information about the volume. 
 * Note that in any module, the info is given for the "Active Volume" which is not always the volume you are visualizing. 
 * Expand "Volume Information" tab and check dimensions, spacing, origin, and other volume information. More on "volumetric images" in Lecture #2 tomorrow. 
 
@@ -101,9 +101,9 @@ It shows the location of the mouse indicator, the pixel values in the image, lab
 
 ## 3D Rendering 
 
-This is only a brief introduction to make sure Volume Rendering works for your Slicer installation and to go over the interface. More on Volume Rendering in Lab #4.
+This is only a brief introduction to make sure 3D Rendering works for your Slicer installation and to go over the interface. More on Volume Rendering in Lab #4.
 
-:pencil2: Assuming you still have CT and MR data loaded, find the Volume Rendering module from the drop-down list or via search function. 
+:pencil2: Assuming you still have CT and MR data loaded, find the ``Volume Rendering`` module from the drop-down list or via search function. 
   * Select the CTBrain from the dropdown list as the Volume, and click on the closed eye icon next to it to turn it open. Slicer will try to render the volume in 3D view. It could be a solid cylinder as it is the shape of the data acquired from the scanner - you can see it in the red (axial) slice.
   
   <img src="images/volume.rendering1.png">
@@ -135,7 +135,7 @@ Go to Edit > Application Settings. When you make changes in the settings, little
 
 * Modules settings let you customize the modules list from the drop-down menu and the shortcuts in the Core Modules bar. To customize select Modules on the left pane. You will see the list of available modules and the *Core Modules* menu bar. Drag and drop any module you'd like.
 
-:pencil2: I use *Volume Rendering* frequently so it is in my Core Modules. Let's add it to the shortcuts. You can thank me later in the workshop. :grin: You can use the arrows to adjust the position of your new shortcut in the menu bar. I like Volume Rendering next to the Volumes module.
+:pencil2: I use ``Volume Rendering`` frequently so it is in my Core Modules. Let's add it to the shortcuts. You can thank me later in the workshop. :grin: You can use the arrows to adjust the position of your new shortcut in the menu bar. I like ``Volume Rendering`` next to the ``Volumes`` module.
    
 <img src="images/module.shortcut.gif">
 
@@ -157,12 +157,14 @@ Go to Edit > Application Settings. When you make changes in the settings, little
 
 <img src="images/gpu.rendering.png" width="650">
 
-:pencil2: Make all of the above changes in settings menu. Restart Slicer. Find "Sample Data" module, download "MRHead" dataset. Go check the Temp and Temp/RemoteIO folder you created on Desktop. What's in there?
+:pencil2: Make all of the above changes in settings menu. Restart Slicer. Find ``Sample Data`` module, download "MRHead" dataset. Go check the Temp and Temp/RemoteIO folder you created on Desktop. What's in there?
 
 ## Extensions and Extension mechanism
+
 3D Slicer contains an extension mechanism to download new extensions that adds to the core functionality of Slicer. We have bundled with SlicerMorph with some of the extensions that we find most useful (i.e., RawImageGuess, Lights, Fiducial Registration, SegmentEditorExtraEffects etc), as well as our own extension and morphometric tools. As such, the extension manager is disabled in SlicerMorph by default. You can enable it from the Preferences menu, however you should be aware  that enabling it may create a conflict with the existing pre-installed modules, and we discourage you doing it. If you do want to try a new extension that is not pre-bundled with SlicerMorph, download and install a new preview version of 3D Slicer and install that extension within that version. 
 
 ## Log File and Reporting a Bug
+
 Related [wiki](https://www.slicer.org/wiki/Documentation/Nightly/Report_a_problem)
 
 * Slicer logs certain events, warnings and errors while you are working on your job. The little red sign on the bottom-right corner with an X in the middle opens the log. Each log entry has a date-and-time stamp; a label of Error, Warning or Info; and a label for the source of the log message (VTK, Pyton etc. are different libraries and bindings Slicer uses).  Clicking on a log entry shows a description below. You can also filter the messages by type using the buttons on the top. 
