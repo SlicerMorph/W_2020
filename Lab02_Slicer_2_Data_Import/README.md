@@ -61,28 +61,64 @@ From the sample data on your computer that you downloaded prior to the workshop 
 
 <img src='images/Dicom2.PNG'>
 
+## Renaming Volumes (or any nodes)
+Sometimes import data (e.g., the DICOM sequence above) doesn't have a useful volume name. You can use the `Data` module to rename any data node loaded into Slicer by right-clicking on it and then choosing rename. Here I change the volume **Cranium1-1 0.63 H90s** to **00010003** (or whatever you would like). 
+
+<img src='images/Rename.PNG'>
 
 
+## Saving Data
+Once you import an image sequence correctly, the very first thing you should do is to save it. At the minimum the Save As dialog box will contain two items; a MRML scene file and the actual volume. You can save either, or just choose to save the volume. MRML file would contain additional properties (e.g., the layout you are currently using, the lookup table you chose to visualizde your dataset, any measurements etc.).[You can find detailed explanation of `Save` dialog box here](https://www.slicer.org/wiki/Documentation/Nightly/SlicerApplication/SavingData). Here we are providing a short overview. 
+
+<img src="images/save_as2.PNG">
 
 
+## Reducing/Cropping Volumes
+In addition to down sampling at the time of data import, you can also use Slicer's built-in modules to downsample your volume or get rid of regions that are of no interest to you. Below we cover both `ResampleScalarVolume` and the `Crop Volume` modules, both of which are core Slicer functions.   
 
+### Downsamping Volumes via ResampleScalarVolume
 
-* **Obtaining sample data from MorphoSource.**### 
- ### 3D models
+* Load the file you saved in previous section (For me it is called *00010003.nrrd*) 
+* Review the image spacing values for the original volume (HINT: Under `volumes` module, and for me they are 0.322x0.322x0.3mm)
+* Search for `ResampleScalarVolume` module
+* Set the input and output volume options and set your spacing option to something larger than your original volume (I used 0.5x0.5x0.5mm)
+* Hit `Apply`
+
+<img src="images/resampleScalarVolume.PNG">
+
+**You should now have a low-resolution version of your original volume.**
+
+### Downsamping Volumes via CropVolume
+
+* Load the file you saved in previous section (For me it is called *00010003.nrrd*) 
+* Review the image spacing values for the original volume (HINT: Under `volumes` module, and for me they are 0.322x0.322x0.3mm)
+* Search for `CropVolume` module
+* Create ROI, hit the `Fit Volume` button
+* Set the input and output volume options and set your spacing option to something larger than 1.0, if you want to reduce your dataset (I used 2)
+* If you expand the `Volume Information` tab you should be able to set what the input volume dimensions were and what they would be in the cropped volume.
+* Hit `Apply`
+
+<img src="images/CropVolume.PNG">
+ 
+
+## Obtaining sample data from MorphoSource.
+### 3D models
   * Go to https://www.morphosource.org/Detail/MediaDetail/Show/media_id/2095
   * Add the calcaneus **M2095-1895** to your cart (you should have an account on MorphoSource)
   * Agree to the terms and download. You should get a file called *Morphosource_amnh_mammals_m-188156_M2095-1895.zip*
   * Drag and drop that file to Slicer and answer the question about zip file contents as YES
   * In the Data dialog box, uncheck the ...USerAgreement.pdf (shows as a scalar overlay), and keep the other two checked
   * Hit OK
+  
 ### Image sequences from MorphoSource.
- While you can technically import the image sequences from MorphoSource exactly like the 3D model example shown before, due to the size of this zip files, we do not suggest it. This the suggested procedure:
- 1. Unzip the zip file that you downloaded from MorphoSource to convenient location on your computer (e.g., Desktop). 
- 2. Load the CSV file into SlicerMorph. From there you can locate the voxel spacing information.
- 3. Use the ImageStacks module to import the volume and use the voxel spacing reported in the CSV file.
+While you can technically import the image sequences from MorphoSource exactly like the 3D model example shown before, due to the size of this zip files, we do not suggest it. This the suggested procedure:
  
-  * Switch to `3D Table` view in the layout options
-  * Enable the MorphoSource data table from Data Module
+1. Unzip the zip file that you downloaded from MorphoSource to convenient location on your computer (e.g., Desktop). 
+2. Load the CSV file into SlicerMorph. 
+3. Switch to `3D Table` view in the layout options
+4. Enable the MorphoSource data table from `Data` Module, and review the table to locate the voxel spacing information.
+5. Use the ImageStacks module to import the volume and use the voxel spacing reported in the CSV file.
+
   
  ## Work on your own. 
  * Alligator skull from sample data 
