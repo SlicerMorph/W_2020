@@ -33,7 +33,12 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 2. Click the `...` button to navigate to the log file from the archive.
 3. Hit Apply.
 
+<img src='images/SkyScanReconImport.PNG'>
+
+7. Review the resultant image using the `Volumes` module.
 :pencil2: `SkyScanReconImport` works only for unmodified image stacks from Nrecon software. 
+
+<img src='images/Volumes2.PNG'>
 
 
 * **Import a DICOM image Sequence**
