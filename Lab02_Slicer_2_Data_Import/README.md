@@ -15,3 +15,29 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 ## Image Import Examples
 * **Import non-DICOM image sequences**
 Go to the **Sample Data** module of SlicerMorph, scroll down to find the 
+* **Import a DICOM image Sequence**
+From the sample data on your computer that you downloaded prior to the workshop (Gorilla_Skulls), locate this folder:
+**Gorilla_Skulls/DICOM_samples/Smithsonian_Gorilla_Skull.zip** and unzip the sample DICOM sequence to convenient location on your computer (e.g., Desktop)
+
+
+* **Obtaining sample data from MorphoSource.**### 
+ ### 3D models
+  * Go to https://www.morphosource.org/Detail/MediaDetail/Show/media_id/2095
+  * Add the calcaneus **M2095-1895** to your cart (you should have an account on MorphoSource)
+  * Agree to the terms and download. You should get a file called *Morphosource_amnh_mammals_m-188156_M2095-1895.zip*
+  * Drag and drop that file to Slicer and answer the question about zip file contents as YES
+  * In the Data dialog box, uncheck the ...USerAgreement.pdf (shows as a scalar overlay), and keep the other two checked
+  * Hit OK
+### Image sequences from MorphoSource.
+ While you can technically import the image sequences from MorphoSource exactly like the 3D model example shown before, due to the size of this zip files, we do not suggest it. This the suggested procedure:
+ 1. Unzip the zip file that you downloaded from MorphoSource to convenient location on your computer (e.g., Desktop). 
+ 2. Load the CSV file into SlicerMorph. From there you can locate the voxel spacing information.
+ 3. Use the ImageStacks module to import the volume and use the voxel spacing reported in the CSV file.
+ 
+  * Switch to `3D Table` view in the layout options
+  * Enable the MorphoSource data table from Data Module
+  
+ ## Work on your own. 
+ * Alligator skull from sample data 
+ 
+  
