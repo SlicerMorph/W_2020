@@ -22,9 +22,10 @@ In this lab we will review how to import non-DICOM stacks using both modules. (N
 5. Create a new volume node to contain this scan. 
 
 * **Import non-DICOM image sequences from Bruker\Skyscan using `SkyScanReconImport` module**
-1. Swrch to `SkyScanReconImport` module.
+1. Switch to `SkyScanReconImport` module.
 2. Click the `...` button to navigate to the log file from the archive.
 3. Hit Apply.
+
 :pencil2: `SkyScanReconImport` works only for unmodified image stacks from Nrecon software. 
 
 
