@@ -134,7 +134,7 @@ As before, it is important to set Masking options correctly to achieve desired r
 One of the most useful things you can do with Segmentation and LabelMaps is to mask raw images to remove unneccesary objects or clean up. 
     <img src="images/Slide24.PNG">  
 
-An important use case of masking is when you have more than one sample in your image and you want to create separate images via segmentation. See this [example](Grow_from_seeds_to_split_volumes.pdf)
+An important use case of masking is when you have more than one sample in your image and you want to create separate images via segmentation. See this [example](images/Grow_from_seeds_to_split_volumes.pdf)
 
 ## Segment Statistics
 
