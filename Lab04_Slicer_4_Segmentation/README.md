@@ -25,57 +25,57 @@ In Slicer, you will first create a Segmentation - which can be converted to Labe
 
 * Find ``Segment Editor`` module from the list, through search function or from the Core Modules shortcuts. 
 
-<img src="images/Slide1.png">
+<img src="images/Slide1.PNG">
 
 * Name your segmentation (if you'd like - it is nice to keep track of things if you are working with a lot of data in one session) and select your master volume, MRBrainTumor1 in this case. 
 
-<img src="images/Slide2.png">
+<img src="images/Slide2.PNG">
 
 * Add a segment by clicking +Add button. It will be named "Segment_1" if it is the first one you created and the numbers will keep increasing as you add more segments. Let's segment the tumor in Segment_1 so rename the segment properly (as Tumor for example). You can rename the segment by double-clicking on its name. 
 You can also change the color of the segment by double clicking on the color next to its name, it is nice to have contrasting colors for the segments so that your visualization is easy to look at. The colors do not mean anything other than visualization. Side Note: If you save your segmentation as a LabelMap, the order of the segments will matter (they will have the labels 1,2,3..n based on the order) and if you don't save your color map separately for Slicer, they might be colored differently next time you load your LabelMap.
 
 Slicer have quite a few color maps you can pick and choose from.
 
-<img src="images/Slide3.png">
+<img src="images/Slide3.PNG">
 
 As soon as you add the segment, the tools in the ``Segment Editor`` are enabled. Click on the first one, "Paint".
 
-<img src="images/Slide4.png">
+<img src="images/Slide4.PNG">
 
 * Each Effect (or tool) is useful in a different scenario (some more than others) and you will have favorites soon. But first things first: 
   * Slicer gives you parameters and options for each tool. Use them. 
   * Undo/Redo buttons allow you to take back some steps but they are limited (I guess 8?).
   * Masking is important. Right now you have one segment but you will have more than one and if you are not careful, you can erase or cut or overwrite other segments unintentionally. Set these options carefully EACH TIME before you apply an effect /tool. I like to keep the ""Modify other segments" option in "Allow overlap". This is one mistake that's hard to recover from... :sob:
     * Overwrite all: The new segment can overwrite the others if it overlaps with them.
-    <img src="images/Slide5.png">
+    <img src="images/Slide5.PNG">
     * Allow overlap: none of the other segments are overwritten so brown/orange segment is overlapping with the green and yellow one.
-    <img src="images/Slide6.png">
+    <img src="images/Slide6.PNG">
     * Overwrite visible: I made the green and yellow segments invsible, painted with the blue one, and it overwrote the brown/orange one. But when I turned the visibility of the green and yellow segments back on, they were overlapping with the new segment and not overwritten. 
-    <img src="images/Slide7.png">
+    <img src="images/Slide7.PNG">
     
-    <img src="images/Slide8.png"> 
+    <img src="images/Slide8.PNG"> 
   
 :pencil2: Explore some of the Effects (tools). 
   
 * **Paint/Erase** is very useful as starting point of some semi-automated methods. It is literally painting over pixels (or voxels). Important thing is to adjust the diameter and select between sphere and circle brush. 
    * Try using it without changing anything: simply paint over a slice in any of the red/yellow/green slice views. Then, move between slices (mouse wheel on any of the red/yellow/green views or slider at the top of them). Then, change it to a sphere brush and try again. When it is a sphere brush, you are painting/erasing in 3D. Note the spherical or disk-shaped brush in 3D view when you are painting in slice view. 
    
-   <img src="images/Slide9.png">
+   <img src="images/Slide9.PNG">
    
-   <img src="images/Slide10.png">
+   <img src="images/Slide10.PNG">
    
    * Click on the "Show 3D" button at the top. This creates a surface model visualization of your segmentation. It may take a few seconds. Mostly it is the smoothing operation that takes a bit long. If you turn of the smoothing by clicking the little arrow next to the Show3D button, you will notice the rendering will "pixelate". 
      * Although it is possible to paint/erase in 3D, it is extremely clunky (for technical reasons). 3D rendering needs to be updated as you edit it, and it is computationally expensive to do so. So, I recommend using it sparingly to check your segmentation or for limited operations (like Scissors tool we'll play with in a minute).
      
-    <img src="images/Slide11.png">
+    <img src="images/Slide11.PNG">
     
-    <img src="images/Slide12.png">
+    <img src="images/Slide12.PNG">
 
 * **Threshold** is one of my favorite tools to begin any segmentation. It creates segments based on an intensity range. In most modalities, the intensities of certain anatomical structures are known. It is also interactive, so you can play with the range until you found a working set. There are also automatic threshold methods that find the min/max values based on intensity histograms.
  
  :pencil2: Click on Threshold and find a good range that works for the tumor in the image. Note how segmentation overlay on slices flashes while you change the range. It doesn't need to be perfect. Make sure "Show 3D" is turned off to speed things up. 
 
-<img src="images/Slide13.png">
+<img src="images/Slide13.PNG">
 
 * **Islands**: Sometimes there are more than one structure in the same intensity range, if they are not "conenected", it is easy to separate them. An island (connected component) is a group of pixels/voxels with the same label and that are "connected". Let's explore the options:
   * Keep largest island: removes all islands except the largest (defined as number of pixels/voxels) connected component. 
@@ -87,8 +87,8 @@ As soon as you add the segment, the tools in the ``Segment Editor`` are enabled.
   
   :pencil2: In my case, I kinda know that tumor is seperated from the skull and currently my segment contains both the skull, some nasal airways and the tumor. I am going to use "Keep selected island" and click on the tumor. Then I can visualize by clicking Show 3D and decide if I want to "Undo" or not. 
   
-  <img src="images/Slide14.png">
-  <img src="images/Slide15.png">
+  <img src="images/Slide14.PNG">
+  <img src="images/Slide15.PNG">
   
   So I am happy with the segmentation, I can clean up the vascular structure attached to the tumor and make it work. Try your own methods and experiment!
   
@@ -97,7 +97,7 @@ As soon as you add the segment, the tools in the ``Segment Editor`` are enabled.
    * Shape: You can select a free-form region, a circular region or a rectangular region.
    * Slice cut: You can remove/keep/fill regions in an unlimited "depth", in positive direction or negative direction. This needs a bit of explanation. The structures we play with are in 3D space but our screens show us a 2D image. In slice views, the axes are pre-determined: in the red slice ciew the unseen 3rd dimension is supero-inferior axis, in the yellow it is right-left, in the yellow it is antero-posterior. In 3D view, the 3rd unseen dimension (imagine the direction from the screen towards your face and towards behind the screen) is whatever orientation your rendering is. So when you select "Unlimited" in slice cut option, it creates a region in unlimited size in this 3rd dimension. If you are cutting in 3D view, it will remove/keep everything inside the region you draw, in front of it, and behind it. Positive and negative options divide this space into 2 in slice views, positive being the superior, right and anterior directions. Symmetric removes or keeps a region with the size you give (in physical coordinates not slices) around the slice you are operating on. It is easier to see the effect when you try:
    
-   <img src="images/Slide16.png">
+   <img src="images/Slide16.PNG">
    
 As before, it is important to set Masking options correctly to achieve desired results.
 
@@ -109,30 +109,30 @@ As before, it is important to set Masking options correctly to achieve desired r
  
  * **Hollow** tool lets you create a *hollow* segment with the thickness specified in the options and using the segment boundary as inside/outside or median border of the new segment.
  
- <img src="images/Slide17.png">
- <img src="images/Slide18.png">
+ <img src="images/Slide17.PNG">
+ <img src="images/Slide18.PNG">
 
  * **Smoothing** tool applies binary smoothing to the segment and smooths the borders. There are different options (and a few binary operations actually) here. Click on "Show more" to read about them.
  
- <img src="images/Slide19.png">
+ <img src="images/Slide19.PNG">
   
   * Most commonly used smoothing filters are Gaussian and Median filters (that actually apply filters or convolutions you saw in the Lecture 2: Applied Imaging Concepts). 
  
    * Closing and Opening have interesting effects like removing parts of sticking out of your segment and filling holes. The size of parts to be removed and holes to be filled depends on the kernel size option of your tool. See below some examples:
    
    Closing
-   <img src="images/Slide20.png">
-   <img src="images/Slide21.png">
+   <img src="images/Slide20.PNG">
+   <img src="images/Slide21.PNG">
    
    Opening
-   <img src="images/Slide22.png">  
-   <img src="images/Slide23.png">  
+   <img src="images/Slide22.PNG">  
+   <img src="images/Slide23.PNG">  
 
 
 ## Mask volume and Split volume
 
 One of the most useful things you can do with Segmentation and LabelMaps is to mask raw images to remove unneccesary objects or clean up. 
-    <img src="images/Slide24.png">  
+    <img src="images/Slide24.PNG">  
 
 An important use case of masking is when you have more than one sample in your image and you want to create separate images via segmentation. See this [example](Grow_from_seeds_to_split_volumes.pdf)
 
@@ -143,18 +143,18 @@ Now that you segmented your structure of interest, you may want to calculate som
 :pencil2: Find an open ``Segment Statistics`` module.
 Make sure your Segmentation and your Volume are selected. You can leave the output as New Table. Open options by clicking the buttons and see what statistics will be calculated. When ready, hit Apply.
 
-<img src="images/Slide25.png">  
+<img src="images/Slide25.PNG">  
 Notice that the layout is automatically changed and a new "Table View" is added. This view displays the results of Segment Statistics module in a table format. Since I have only one segment, it calculated stats for only that. 
 
 ## Segmentations module 
 
 ``Segmentations`` module goes hand-in-hand with the ``Segment Editor`` module. You can even easily switch to it by clicking on "Segmentations" button on top of the ``Segment Editor`` module. 
 
-<img src="images/Slide26.png">
+<img src="images/Slide26.PNG">
 
 First panel lists all segments in your segmentation and lets you change the visibility, opacity and color of the segments.
 
-<img src="images/Slide28.png">
+<img src="images/Slide28.PNG">
 
 The next panel, Display, controls the display properties. By default, the segments are visualized with opac borders and transparent fills on slices. You can change the opacity and visibility of these here for ALL segments at once. The next panel lets you control these settings for the selected segment only.
 
@@ -162,21 +162,21 @@ The Copy/Move panel allows you to copy or move the segments in your segmentation
 
 This part is important. Exporting your segmentation. Most analyses require a LabelMap or a Model as we discussed. You can export any segments or all segments as LabelMaps or Models here. If you are exporting a LabelMap, it may be important to select your reference volume since the new LabelMap is actually a volume/image that needs a physical space (Origin, Spacing, Dimensions etc.). If you do not select a reference volume, the segmentation will be exported to smallest possible volume/image and you may not be able to easily use it as a mask with your original image. 
 
-<img src="images/Slide29.png">
+<img src="images/Slide29.PNG">
 
 Another fair warning: if your segments are overlapping, the new LabelMap produced will give priority to the "later" segments in the order, i.e. the segment that's down the list will claim the overlapping voxels. See below:
 
-<img src="images/Slide30.png">
+<img src="images/Slide30.PNG">
 
-<img src="images/Slide31.png">
+<img src="images/Slide31.PNG">
 
 :pencil2: Let's export our segmentation as a LabelMap. Now our LabelMap is a speacial volume in the scene, check it out in ``Data`` module. You can save it as an image file (NIFTI or NRRD recommended). 
 
 Let's go and check volume properties in ``Volumes`` module. Our image and LabelMap should have same dimensions and spacing, same physical space, but the actual values of voxels for the LabelMap should be 0 and 1. 
 
-<img src="images/Slide32.png">
+<img src="images/Slide32.PNG">
 
-<img src="images/Slide33.png">
+<img src="images/Slide33.PNG">
 
 
 # Models
@@ -185,19 +185,19 @@ A model is another representation you can produce from your segmentation.
 
 :pencil2: Go back to ``Segmentations`` module (I am lazy so I first go to ``Segment Editor`` using shortcuts, then I click on Segmentations button) and export a Model of your segment. You can leave the output nose as it is and it will create a new model hierarchy. If your segment is relatively small, it should take a short time. 
 
-<img src="images/Slide34.png">
+<img src="images/Slide34.PNG">
 
 This representation is not a volume anymore, it looks like the thing you saw when you hit Show 3D button in Segment Editor but this is not just a visualization. This is a new data structure with 3D points and polygons, a surface mesh. Go into the Data module and see it. You can turn off the visibility here and change the color etc. Slicer assigns the same name and color from the Segmentation. Models are not show in slice views (they could be but they are not designed for it). The color is again just for visualization and when you save the model, it is not written to the file. 
 
-<img src="images/Slide35.png">
+<img src="images/Slide35.PNG">
 
 ``Models`` module, a shortcut with a green mesh icon in the core modules toolbar, is similar to ``Segmentations`` or ``Volumes`` module. It lets you explore the properties of this data type and change visualization settings. You can turn the visibility on and off, change the opacity, see the data properties: in this case, how many cells (polygons) and points there are in your Model, its volume and surface area. 
 
-<img src="images/Slide36.png">
+<img src="images/Slide36.PNG">
 
 Play with the representation setting. Your model is a mesh. It has points and polygons. The default setting is to show the surfaces (polygons) but not the points or edges. You can change it if you'd like but surface is really the best visualization for this data. Seeing points and edges gives you an idea how "precise" your data is. It is ultimately based on the quality of the volume data you produced this mesh from. 
 
-<img src="images/Slide37.png">
+<img src="images/Slide37.PNG">
 
 Another hidden setting here may change your life: the Visible Sides. With this smooth closed surface of the tumor, it is not easy to appreciate because all faces are pointing outwards. From your imaging basics lecture, remember that each cell/polygon has a normal vector and it defines the front face of the mesh. By changing which sides are visible, you can change what you are seeing dramatically. Play with it. And remember this setting when you load a mesh/model and think it looks degenerated. Probably part of it is not visualized becasue of this setting. 
 
@@ -214,7 +214,7 @@ The module for simple processing of models is the ``Surface Toolbox``. Similar t
 
 :pencil2: Find and open ``Surface Toolbox`` module. Select your new Model (mine is named Tumor) as the input and select the option to create a new model as output. 
 
-<img src="images/Slide38.png">
+<img src="images/Slide38.PNG">
 
 Surface toolbox applies all operations you enabled in the module panel to your input mesh. Let's go over what you can do with surface toolbox:
  * Decimation: Reduces number of cells and points by averaging - similar to resizing an image.
