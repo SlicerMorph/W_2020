@@ -121,7 +121,9 @@ While you can technically import the image sequences from MorphoSource exactly l
 4. Enable the MorphoSource data table from `Data` Module, and review the table to locate the voxel spacing information.
 5. Use the ImageStacks module to import the volume and use the voxel spacing reported in the CSV file.
 
-  
+## Importing an unknown data type:
+Occassionally you may have a proprietory or undocumented format that you may want to import into Slicer. In such case, none of the methods above will work. You can try the `RawImageGuess` module, which is bundled with SlicerMorph. A youtube tutorial shows the basic usage https://www.youtube.com/watch?time_continue=2&v=ajpOQEAyWkA&feature=emb_logo. You can also find more information on https://github.com/acetylsalicyl/SlicerRawImageGuess.
+
  ## Work on your own. 
  * Alligator skull from sample data 
  
