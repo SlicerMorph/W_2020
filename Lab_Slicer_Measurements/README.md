@@ -95,17 +95,7 @@ The Volume Rendering module provides interactive visualization of 3D image data.
 * The physical limits to the size of the volumes that can be rendered are determined by the graphics card RAM and MAX_3D_TEXTURE_SIZE. Every dimension of the image must be less than the value of the MAX_3D_TEXTURE_SIZE and the full dataset must fit into GPU’s RAM. For the full discussion on these limits, see the Slicer discourse thread [here](https://discourse.slicer.org/t/what-spec-gpu-is-required-for-gpu-volumentric-rendering/1596).
 * Driver issues: To configure laptops with two GPUS see [this discussion](https://discourse.slicer.org/t/can-i-choose-which-gpu-to-use/3149)
 * Crop 3D view vs Crop Volume confusion
-## Example: Volume Rendering 
-1. Load the MRIHead volume from the Sample Data module.
-2. Open the Volume Rendering module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. You can change the 3D Slicer layout to 3D only.
 
-<img src="./images/initialDisplay.png">
-
-3. Expand the **Advanced** tab to view the opacity and color transfer functions. You can click on these functions to move or add additional control points.
-<img src="./images/initialTF.png">
-
-4. Under the **Display** tab, click on the **Select a Preset** menu. This menu contains saved transfer functions that work well for common data types. Select **MRI Default** (row 4, column 5). Try adjusting the color and opacity functions of this suggested display setting.
-<img src="./images/colorPreset.png">
 
 ## Example: Displaying Mesh Data
 Mesh data in Slicer is displayed using the Models Module. It can not be rendered using the Volume Render Module.
@@ -120,11 +110,37 @@ Mesh data in Slicer is displayed using the Models Module. It can not be rendered
 3. Open the Models module. Experiment with changing the color and opacity of the skull.
 <img src="./images/Models.png">
 
+## Example: Volume Rendering 
+1. Load the MRIHead volume from the Sample Data module.
+2. Open the Volume Rendering module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. You can change the 3D Slicer layout to 3D only.
 
-## Bonus content: SlicerAnimator (if we have time)
-1. Install Sequences extension from Extension Manager.
-2. git clone https://github.com/pieper/SlicerAnimator
-3. add the directory SlicerAnimator/Animator to the Modules tab of Settings (Edit->Application Settings)
-4. Restart Slicer and search for Animator module 
+<img src="./images/initialDisplay.png">
+
+3. Expand the **Advanced** tab to view the opacity and color transfer functions. You can click on these functions to move or add additional control points.
+<img src="./images/initialTF.png">
+
+4. Under the **Display** tab, click on the **Select a Preset** menu. This menu contains saved transfer functions that work well for common data types. Select **MRI Default** (row 4, column 5). Try adjusting the color and opacity functions of this suggested display setting.
+<img src="./images/colorPreset.png">
+
+## Example: SlicerAnimator 
+1. Load the MRIHead volume from the Sample Data module.
+
+2. Open the Volume Rendering module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. Under the Display Menu, adjust the Shift sliderbar to optimize 3D visibility.
+
+2. Open the `Animator`  module. In the Animation Parameters dropdown menu, select the option to create a new animation. 
+
+3. Select the "Add Action" button and choose "CameraRotationAction" from the menu. A CameraRotation action will be added to the Action menu. The properties of the rotation can be adjusted using the "Edit" button. To preview the animation, select the play button. 
+
+4. Select the "Add Action" button and choose "ROIAction" from the menu. Two ROI markups will be placed in the scene. The first ROI will be used to crop the region displayed at the start of the animation and the second will be used to crop the region displayed at the end of the animation. To adjust the placement of the ROIs, switch to the `Data` module and turn the visibility of the ROI markups on. Place the Start ROI around the whole head. Place the second ROI inside the brain. Return to the `Animator` module to preview the effect of this action. 
+
+5. Select the "Add Action" button and choose "VolumePropertyAction". The volume property action allows your animation to transition from one set of rendering properties to a second set. To use this effect, you will need to create three sets of volume properties. The first will control the rendering at the beginning of the animation, the second will control the rendering at the end of the animation, and the third is an arbitrary set of properties that will be used to store the volume's display properties as they are updated. To create the properties, click the "Edit" button next to the volume property action that you added to the Actions list. Note that the three property sets created are named "Start VolumeProperty", "End VolumeProperty", and "VolumeProperty". 
+
+6. Open the `Volume Rendering` module and expand the "Inputs" menu. In the Property drop-down menu, select "Start VolumeProperty". The current rendering will be displayed at the start of the animation. Adjust the color mapping and opacity. You can repeat this process for the "End VolumeProperty", but in this example we will use preset display properties for the final animation rendering. In the display menu, click the "Select a Preset" button and choose "MR-default". This will display the volume as it will appear at the end of the aniamtion. Before leaving  the `Volume Rendering` module, return to the property menu and select "VolumeProperty". It is critical that this is the final active property selected when leaving the `Volume Rendering` module.
+
+7. Open the `Animator` module. Click the "Edit" button next to the Volume Property action in the Actions menu. Select the Start VolumeProperty as "Start VolumeProperty", End VolumeProperty as "MR-default" and the Animated VolumeProperty as "VolumeProperty". Click the "OK" button and preview the animation using the play button.
+
+8. When you are done adjusting the animation parameters, Select an output file location in the Export menu and click the "Export" button to save your animation.
+
+
 
 * [Demo video](https://youtu.be/9GBekYcJR4E)
