@@ -145,7 +145,7 @@ You can repeat this process for the "End VolumeProperty", but in this example we
 <img src="./images/endProperty.png">
 
 7. Open the `Animator` module. Click the "Edit" button next to the Volume Property action in the Actions menu. Select the Start VolumeProperty as "Start VolumeProperty", End VolumeProperty as "MR-default" and the Animated VolumeProperty as "VolumeProperty". Click the "OK" button and preview the animation using the play button.
-<img src="./images/VolumeProperty.png">
+<img src="./images/volumeProperty.png">
 
 8. When you are done adjusting the animation parameters, Select an output file location in the Export menu and click the "Export" button to save your animation.
 
