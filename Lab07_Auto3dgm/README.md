@@ -11,7 +11,7 @@ The auto3dgm UI consists of three components:
 * **run**: subsample and align the data
 * **visualize**: the aligned data in a pop-up window
 
-<img src="images/auto3dgm_UI">
+<img src="images/auto3dgm_UI.png">
 
 ## 2. Path setups and parameters
 In the **setup** tab, specify 
@@ -22,7 +22,7 @@ Then click on **Load Data**.
 
 As we discussed in the previous lecture, auto3dgm uses a two-phase analysis for shape alignment. The algorithm first subsamples two sets of pseudolandmarks for each shape, and then aligns the subsampled points. In the algorithm, we will need to specify how many points we will subsample in each phase.  Due to time constraint in this tutorial, let's only use **20 points for phase 1** and **40 points for phase 2**. In general, a few hundred points will give pretty good shape alignment. The more points we use, the better the results. 
 
-<img src="images/autoinput">
+<img src="images/autoinput.png">
 
 There are some other parameters in the auto3dgm UI. In general, you can leave them as they are. 
 * **Maximum iterations**: the max number of alignment 
