@@ -33,7 +33,7 @@ Sequentially place points. A curve will be fit to the points and updated as addi
 <img src="./images/FiducialPersistence.png">
 
 ## Markup Management
-Fiducial points and anchor points of lines, curves, and angles can be accessed and manipulated using the Markups Module. 
+Fiducial points and anchor points of lines, curves, and angles can be accessed and manipulated using the `Markups` module. 
 <img src="./images/markupsModule1.png">
 * In the Create menu, a new node Markups node can be created for fiducials, lines, angles, and curves.
 * In the Display menu, set the visibility, opacity, glyph and text size of a markup node. Expand the Advanced tab for additional options.
@@ -70,22 +70,38 @@ crossSectionSurfaceModel.GetDisplayNode().SetOpacity(0.5)
 crossSectionSurfaceModel.SetDescription("Area[mm2] = {0:.2f}".format(areaMm2))
 ```
  <img src="./images/VisualizingCurveArea.png">
-## Example 2: Using the Line Profile module
+## Example 2: Using the `Line Profile` module
 In this example, we will use the `Line profile` module to place a line and examine the intensities of a volume along the line.
 
 1. Check that the MRHead volume from example 1 is loaded in the scene.
 
 2. Select the line markup mode and place a line along an area of interest in one of the slice views. This could also be done using an open or closed curve.
 
-3. Select the `Line Profile` module. Choose MRHead as the input volume, the line you created (by default named "L") as the input line and choose the options to create a new output table and plot series. If needed, you can adjust the number of samples along the line using the Line resolution slider. Select the "Compute intensity profile" button and a line plot of the intensity volume intensity values sampled along the line. From the `Data` module you can also view the results as a table by clicking the eyeball next to the name of the table node created.
+3. Select the `Line Profile` module. Choose MRHead as the input volume, the line you created (by default named **L**) as the input line and choose the options to create a new output table and plot series. If needed, you can adjust the number of samples along the line using the Line resolution slider. Select the **Compute intensity profile** button and a line plot of the intensity volume intensity values sampled along the line. From the `Data` module you can also view the results as a table by clicking the eyeball next to the name of the table node created.
 
 <img src="./images/LineProfile.png">
-## Volume Rendering
-The Volume Rendering module provides interactive visualization of 3D image data. For full documentation of the panel and functions, see [here](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VolumeRendering#Panels_and_their_use).
+
+## Visualization: Displaying Mesh Data
+Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` Module. Fiducial points are automatically placed on the surface of the a loaded mesh and will be constrained to the surface when they are moved along it. The control points for other markups are also constrained to mesh surfaces when present, but the interpolated . 
+
+## Example: Displaying a Mesh and place curve on surface
+1. Load the Gorilla Skull Reference Model under the SlicerMorph tab of the `Sample Data` module (you will need SLicerMorph installed to see this option in the menu).
+
+<img src="./images/sampleDataGorilla.png">
+
+2.Center the dataset in the 3D viewing window using the button at the top left of the window. Optionally, change to the 3D only layout.
+
+<img src="./images/centerGorilla.png">
+
+3. Open the `Models` module. Experiment with changing the color and opacity of the skull.
+<img src="./images/Models.png">
+
+## Visualization: Volume Rendering
+The `Volume Rendering` module provides interactive visualization of 3D image data. For full documentation of the panel and functions, see [here](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VolumeRendering#Panels_and_their_use).
 * Only scalar volumes can be used for volume rendering. Vector volumes (eg jpg, png, bmp, or other classic 2D formats) can be converted to scalar volumes using the [VectorToScalarVolume module](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VectorToScalarVolume).
 * 3D Slicer uses volume ray casting to computes 2D images from 3D volumetric data sets. Unlike surface reconstruction, there is no estimation of object surfaces or segmentation.
 * The values displayed are calculated using a transfer function that incorporates voxel intensities, material properties, and illumination.
-* The opacity and color of the image can be adjusted by modifying their transfer functions in the Volume Rendering module.
+* The opacity and color of the image can be adjusted by modifying their transfer functions in the `Volume Rendering` module.
 
  <img src="./images/volumeRenderTF.png">
  
@@ -98,8 +114,8 @@ The Volume Rendering module provides interactive visualization of 3D image data.
 
 
 ## Example: Displaying Mesh Data
-Mesh data in Slicer is displayed using the Models Module. It can not be rendered using the Volume Render Module.
-1. Load the Gorilla Skull Reference Model under the SlicerMorph tab of the Sample Data module (you will need SLicerMorph installed to see this option in the menu).
+Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` Module.
+1. Load the Gorilla Skull Reference Model under the SlicerMorph tab of the `Sample Data` module (you will need SLicerMorph installed to see this option in the menu).
 
 <img src="./images/sampleDataGorilla.png">
 
@@ -107,12 +123,12 @@ Mesh data in Slicer is displayed using the Models Module. It can not be rendered
 
 <img src="./images/centerGorilla.png">
 
-3. Open the Models module. Experiment with changing the color and opacity of the skull.
+3. Open the `Models` module. Experiment with changing the color and opacity of the skull.
 <img src="./images/Models.png">
 
 ## Example: Volume Rendering 
-1. Load the MRIHead volume from the Sample Data module.
-2. Open the Volume Rendering module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. You can change the 3D Slicer layout to 3D only.
+1. Load the MRIHead volume from the `Sample Data` module.
+2. Open the `Volume Rendering` module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. You can change the 3D Slicer layout to 3D only.
 
 <img src="./images/initialDisplay.png">
 
@@ -125,30 +141,28 @@ Mesh data in Slicer is displayed using the Models Module. It can not be rendered
 ## Example: SlicerAnimator 
 The `Animator` module helps create and export animations in mp4 or GIF format. The animations are created by visualizing a volume and adjusting the rotation, ROI cropping, and rendering properties. A demo video of this module is also available [here](https://youtu.be/9GBekYcJR4E) .
 
-1. Load the MRIHead volume from the Sample Data module.
+1. Load the MRIHead volume from the `Sample Data` module.
 
-2. Open the Volume Rendering module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. Under the Display Menu, adjust the Shift sliderbar to optimize 3D visibility.
+2. Open the `Volume Rendering` module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. Under the Display Menu, adjust the Shift sliderbar to optimize 3D visibility.
 
 2. Open the `Animator`  module. In the Animation Parameters dropdown menu, select the option to create a new animation. 
 <img src="./images/animatorModule.png">
 
-3. Select the "Add Action" button and choose "CameraRotationAction" from the menu. A CameraRotation action will be added to the Action menu. The properties of the rotation can be adjusted using the "Edit" button. To preview the animation, select the play button. 
+3. Select the **Add Action** button and choose **CameraRotationAction** from the menu. A CameraRotation action will be added to the Action menu. The properties of the rotation can be adjusted using the **Edit** button. To preview the animation, select the play button. 
 <img src="./images/addCamera.png">
 
-4. Select the "Add Action" button and choose "ROIAction" from the menu. Two ROI markups will be placed in the scene. The first ROI will be used to crop the region displayed at the start of the animation and the second will be used to crop the region displayed at the end of the animation. To adjust the placement of the ROIs, switch to the `Data` module and turn the visibility of the ROI markups on. Place the Start ROI around the whole head. Place the second ROI inside the brain. Return to the `Animator` module to preview the effect of this action. 
+4. Select the **Add Action** button and choose **ROIAction** from the menu. Two ROI markups will be placed in the scene. The first ROI will be used to crop the region displayed at the start of the animation and the second will be used to crop the region displayed at the end of the animation. To adjust the placement of the ROIs, switch to the `Data` module and turn the visibility of the ROI markups on. Place the Start ROI around the whole head. Place the second ROI inside the brain. Return to the `Animator` module to preview the effect of this action. 
 <img src="./images/selectROI.png">
 
-5. Select the "Add Action" button and choose "VolumePropertyAction". The volume property action allows your animation to transition from one set of rendering properties to a second set. To use this effect, you will need to create three sets of volume properties. The first will control the rendering at the beginning of the animation, the second will control the rendering at the end of the animation, and the third is an arbitrary set of properties that will be used to store the volume's display properties as they are updated. To create the properties, click the "Edit" button next to the volume property action that you added to the Actions list. Note that three property sets are created  named "Start VolumeProperty", "End VolumeProperty", and "VolumeProperty". 
+5. Select the **Add Action** button and choose **VolumePropertyAction**. The volume property action allows your animation to transition from one set of rendering properties to a second set. To use this effect, you will need to create three sets of volume properties. The first will control the rendering at the beginning of the animation, the second will control the rendering at the end of the animation, and the third is an arbitrary set of properties that will be used to store the volume's display properties as they are updated. To create the properties, click the **Edit** button next to the volume property action that you added to the Actions list. Note that three property sets are created  named **Start VolumeProperty**, **End VolumeProperty**, and **VolumeProperty**. 
 
-6. Open the `Volume Rendering` module and expand the "Inputs" menu. In the Property drop-down menu, select "Start VolumeProperty". The current rendering will be displayed at the start of the animation. Adjust the color mapping and opacity. 
+6. Open the `Volume Rendering` module and expand the **Inputs** menu. In the Property drop-down menu, select **Start VolumeProperty**. The current rendering will be displayed at the start of the animation. Adjust the color mapping and opacity. 
 <img src="./images/startProperty.png">
 
-You can repeat this process for the "End VolumeProperty", but in this example we will use preset display properties for the final animation rendering. In the display menu, click the "Select a Preset" button and choose "MR-default". This will display the volume as it will appear at the end of the aniamtion. Before leaving  the `Volume Rendering` module, return to the property menu and select "VolumeProperty". It is critical that this is the final active property selected when leaving the `Volume Rendering` module.
+You can repeat this process for the **End VolumeProperty**, but in this example we will use preset display properties for the final animation rendering. In the display menu, click the **Select a Preset** button and choose **MR-default**. This will display the volume as it will appear at the end of the aniamtion. Before leaving  the `Volume Rendering` module, return to the property menu and select **VolumeProperty**. It is critical that this is the final active property selected when leaving the `Volume Rendering` module.
 <img src="./images/endProperty.png">
 
-7. Open the `Animator` module. Click the "Edit" button next to the Volume Property action in the Actions menu. Select the Start VolumeProperty as "Start VolumeProperty", End VolumeProperty as "MR-default" and the Animated VolumeProperty as "VolumeProperty". Click the "OK" button and preview the animation using the play button.
+7. Open the `Animator` module. Click the **Edit** button next to the Volume Property action in the Actions menu. Select the Start VolumeProperty as **Start VolumeProperty**, End VolumeProperty as **MR-default** and the Animated VolumeProperty as **VolumeProperty**. Click the **OK** button and preview the animation using the play button.
 <img src="./images/volumeProperty.png">
 
-8. When you are done adjusting the animation parameters, Select an output file location in the Export menu and click the "Export" button to save your animation.
-
-<img src="./images/Animation.mp4">
+8. When you are done adjusting the animation parameters, Select an output file location in the Export menu and click the **Export** button to save your animation.
