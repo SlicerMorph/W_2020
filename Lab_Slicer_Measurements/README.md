@@ -1,10 +1,9 @@
-# Lab 04 Slicer#3: Measurements (angles, lines, 3D curves, landmarks) and Visualization 
+# Lab Slicer #4: Measurements and Visualization 
 ## Overview of markups
 * Stable version of Slicer only supports fiducial markups 
-* Preview version adds: lines, angles, open and closed curves (planes will be added to the list in the upcoming months)
+* Slicer Nightly and SlicerMorph versions add: lines, angles, ROIs, open and closed curves, and improved handling of large numbers of markups. 
 <img src="./images/MarkupWidgets.png">
 
-* Using the preview version is strongly recommended due to the additional markups types and improvements to the fiducial representation  allowing better performance with large numbers of markups and easier user interaction
 * Updates to Markups module are ongoing so check back for updates
 ## Markup Types
 **ROI:**
@@ -29,19 +28,22 @@ Sequentially place points. A curve will be fit to the points and updated as addi
   * Transform mode is the default interaction mode. This mode allows interaction with loaded data (pan, zoom, rotate)
   * The icons in the mouse mode toolbar at the top of the main GUI allow to switch between these modes
   * Place mode allows to place one object then switches modes back to Transform mode. Fiducial is the default object.
+  * If there is no active Markup node, one will be created with the first placement. Curve points and fiducials will be added to the active Markup node, if one exists. 
   * Place mode can be made persistent by clicking the checkbox in the mouse mode toolbar.
 <img src="./images/FiducialPersistence.png">
 
 ## Markup Management
-Fiducial points and anchor points of lines and curves can be accessed and manipulated using the Markups Module. 
-<img src="./images/markupsModule.png">
-* In the display menu, set the visibility, opacity, glyph and text size of a markup node
-* In the markups table, adjust visibility, labels, and position of individual fiducials or anchor points
+Fiducial points and anchor points of lines, curves, and angles can be accessed and manipulated using the Markups Module. 
+<img src="./images/markupsModule1.png">
+* In the Create menu, a new node Markups node can be created for fiducials, lines, angles, and curves.
+* In the Display menu, set the visibility, opacity, glyph and text size of a markup node. Expand the Advanced tab for additional options.
+* In the Control Points menu, use the table to adjust visibility, labels, and position of individual fiducials or anchor points
+<img src="./images/markupsModule2.png">
 
-## Example: Using Markups for Measurement
+## Example 1: Using Markups for Measurement
 In this example, we will place a closed curve on one slice of a CT scan, measure the area of the curve, and visualize the region. For more detail and discussion, see the Slicer discourse thread [here](https://discourse.slicer.org/t/how-can-i-calculate-an-area-on-a-ct-image-i-can-calculate-volumes-mm-3-but-not-areas-mm-2/1549/7).
 
-1. Select the Sample Data module and load the MRIHead volume. 
+1. Select the `Sample Data` module and load the MRIHead volume. 
  <img src="./images/sampleData.png">
 
 2. Select the closed curve markup mode and place a curve around the brain tissue in the red view window (axial slice). You can change the Slicer layout to red window only for better detail.
@@ -68,7 +70,16 @@ crossSectionSurfaceModel.GetDisplayNode().SetOpacity(0.5)
 crossSectionSurfaceModel.SetDescription("Area[mm2] = {0:.2f}".format(areaMm2))
 ```
  <img src="./images/VisualizingCurveArea.png">
+## Example 2: Using the Line Profile module
+In this example, we will use the `Line profile` module to place a line and examine the intensities of a volume along the line.
 
+1. Check that the MRHead volume from example 1 is loaded in the scene.
+
+2. Select the line markup mode and place a line along an area of interest in one of the slice views. This could also be done using an open or closed curve.
+
+3. Select the `Line Profile` module. Choose MRHead as the input volume, the line you created (by default named "L") as the input line and choose the options to create a new output table and plot series. If needed, you can adjust the number of samples along the line using the Line resolution slider. Select the "Compute intensity profile" button and a line plot of the intensity volume intensity values sampled along the line. From the `Data` module you can also view the results as a table by clicking the eyeball next to the name of the table node created.
+
+<img src="./images/LineProfile.png">
 ## Volume Rendering
 The Volume Rendering module provides interactive visualization of 3D image data. For full documentation of the panel and functions, see [here](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VolumeRendering#Panels_and_their_use).
 * Only scalar volumes can be used for volume rendering. Vector volumes (eg jpg, png, bmp, or other classic 2D formats) can be converted to scalar volumes using the [VectorToScalarVolume module](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VectorToScalarVolume).
