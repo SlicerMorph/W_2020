@@ -84,7 +84,7 @@ In this example, we will use the `Line profile` module to place a line and exami
 ## Visualization: Displaying Mesh Data
 Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` Module. Fiducial points are automatically placed on the surface of the a loaded mesh and will be constrained to the surface when they are moved along it. The control points for other markups are also constrained to mesh surfaces when present, but the interpolated . 
 
-## Example: Displaying a Mesh and place curve on surface
+## Example 3: Displaying a Mesh and resampling a curve on the surface
 1. Load the Gorilla Skull Reference Model under the SlicerMorph tab of the `Sample Data` module (you will need SLicerMorph installed to see this option in the menu).
 
 <img src="./images/sampleDataGorilla.png">
@@ -95,6 +95,15 @@ Mesh data in Slicer is displayed using the `Models` Module. It can not be render
 
 3. Open the `Models` module. Experiment with changing the color and opacity of the skull.
 <img src="./images/Models.png">
+
+4. Select open curve placement mode from the upper menu bar and place a curve between landmarks **35** and **42** using approximately 10 points. Note that the control points are snapped to the mesh, but the curve itself may lie above or below the mesh surface. In the nem=
+<img src="./images/curveOnMesh.png">
+
+5. Open the `Markups` module. Expand the Resample Menu. Select **Create a new markups curve** from the Output node selector and set the Number of resampled points to 50. In the **Constrain points to surface** menu, select the loaded gorilla mesh. Before resampling, confirm that the curve being resampled is selected as the active node in the `Markups` table. 
+<img src="./images/resampleOptions.png">
+
+Click the **Resample curve** button to generate a new open curve with 50 points constrained to the mesh surface. This results in a curve that is closer to the actual surface curvature. Note any difference in length between the original and resampled curves in the `Markups` table.
+<img src="./images/NewCurve.png">
 
 ## Visualization: Volume Rendering
 The `Volume Rendering` module provides interactive visualization of 3D image data. For full documentation of the panel and functions, see [here](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VolumeRendering#Panels_and_their_use).
@@ -112,19 +121,6 @@ The `Volume Rendering` module provides interactive visualization of 3D image dat
 * Driver issues: To configure laptops with two GPUS see [this discussion](https://discourse.slicer.org/t/can-i-choose-which-gpu-to-use/3149)
 * Crop 3D view vs Crop Volume confusion
 
-
-## Example: Displaying Mesh Data
-Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` Module.
-1. Load the Gorilla Skull Reference Model under the SlicerMorph tab of the `Sample Data` module (you will need SLicerMorph installed to see this option in the menu).
-
-<img src="./images/sampleDataGorilla.png">
-
-2.Center the dataset in the 3D viewing window using the button at the top left of the window. Optionally, change to the 3D only layout.
-
-<img src="./images/centerGorilla.png">
-
-3. Open the `Models` module. Experiment with changing the color and opacity of the skull.
-<img src="./images/Models.png">
 
 ## Example: Volume Rendering 
 1. Load the MRIHead volume from the `Sample Data` module.
