@@ -16,7 +16,13 @@ The auto3dgm UI consists of three components:
 ## 2. Path setups and parameters
 In the **setup** tab, specify 
 * input folder: location where you saved the downsampled gorilla skull dataset, e.g., 
+```
+/Users/shanshan/Dropbox/Gorilla_small_ds/gorilla_scull_ds
+```
 * output folder: location where you want to save the aligned data and the pseudolandmarks, e.g., 
+```
+/Users/shanshan/Documents/Slicer/result
+```
 
 Then click on **Load Data**.
 
