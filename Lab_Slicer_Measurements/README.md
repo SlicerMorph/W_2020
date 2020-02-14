@@ -123,6 +123,8 @@ Mesh data in Slicer is displayed using the Models Module. It can not be rendered
 <img src="./images/colorPreset.png">
 
 ## Example: SlicerAnimator 
+The `Animator` module helps create and export animations in mp4 or GIF format. The animations are created by visualizing a volume and adjusting the rotation, ROI cropping, and rendering properties. A demo video of this module is also available [here](https://youtu.be/9GBekYcJR4E) .
+
 1. Load the MRIHead volume from the Sample Data module.
 
 2. Open the Volume Rendering module. In the **Volume** field, make sure the volume MRHead is selected. Click the eyeball next to the **Volume** field to display the image. Under the Display Menu, adjust the Shift sliderbar to optimize 3D visibility.
@@ -149,4 +151,4 @@ You can repeat this process for the "End VolumeProperty", but in this example we
 
 8. When you are done adjusting the animation parameters, Select an output file location in the Export menu and click the "Export" button to save your animation.
 
-* [Demo video](https://youtu.be/9GBekYcJR4E)
+<img src="./images/Animation.mp4">
