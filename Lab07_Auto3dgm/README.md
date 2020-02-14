@@ -1,9 +1,9 @@
 # Lab Auto3Dgm: Establishing Landmark-free Correspondence 
 In this lab, you will
 
-* use "Auto3dgm" module to align the gorilla skull dataset
+* use `Auto3dgm` module to align the gorilla skull dataset
 * visualize aligned data in Slicer or in a web browser
-* use pseudolandmarks computed with the "Auto3dgm" module to visualize the mean shape and principal components in the "GPA" module
+* use pseudolandmarks computed with the `Auto3dgm` module to visualize the mean shape and principal components in the `GPA` module
  
 ## 1. Auto3dgm UI in Slicer
 The auto3dgm UI consists of three components:
@@ -56,7 +56,7 @@ Click on **Start mesh visualization viewer**.
 You can select either **visualize phase 1 alignment** or **visualize phase 2 alignment**.
 The aligned shapes will be shown in a pop-up browser window shown below. 
 
-:bangbang: Very Important :bangbang: make sure you click on after you finish the visualization. 
+:bangbang: Very Important :bangbang: make sure you click on **Start mesh visualization viewer** button after you finish the visualization. 
 
 
 **For Mac users:**
@@ -77,7 +77,7 @@ In the previous lab on SlicerMorph, you learned how to do statistical shape anal
 3) low-resolution auto3dgm landmarks (computed during lab in folder "Output folder > Phase2 > aligned_landmarks" )
 4) high-resolution auto3dgm landmarks (in folder "Lab07_Auto3dgm > HighResLmks").
 
-Open "GPA" module and compute the mean shape and the principal component analysis for each set of landmarks. 
+Open `GPA` module and compute the mean shape and the principal component analysis for each set of landmarks. 
 
 ## 6. Work on your own data
 Make sure your data are saved in the format of .ply
