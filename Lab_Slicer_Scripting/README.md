@@ -7,12 +7,12 @@ This lab introduces simple Python scripts to preform custom image preprocessing 
 
 ## Example 1: Aligning volumes using landmarks (Frankfort alignment plane).
 The Frankfurt plane defines the standard anatomical position of the human skull. The plane passes through landmarks placed at the left orbitale and the left and right tragus. Alignment with the Frankfurt plane is a standard preprocessing step when analyzing human face, brain, or head images.
-<img src="https://github.com/SlicerMorph/S_2019/blob/master/Lab08/images/Frankfurt.png">
+<img src="/images/Frankfurt.png">
 
 1. Download the sample data using [this link](https://github.com/SlicerMorph/S_2019/raw/master/Lab08/data/MRHead.nrrd). It contains a CT scan of a human head that is out of the standard alignment. 
 2. Open Slicer and load the data. In the Volume Rendering module, adjust the view properties. 
 
-<img src="https://github.com/SlicerMorph/S_2019/blob/master/Lab08/images/unaligned.png">
+<img src="/images/unaligned.png">
 
 3. Use the menu button on the top bar to initiate lanmark placement mode. Place three landmarks on the face at the left orbitale (lowest point of the left eye socket) and the left and right tragus (upper margin of each ear canal). It's ok to approximate for this exercise. 
 
@@ -21,7 +21,7 @@ The Frankfurt plane defines the standard anatomical position of the human skull.
     * left tragus: **poL**
     * right tragus: **poR**
 
-<img src="https://github.com/SlicerMorph/S_2019/blob/master/Lab08/images/landmarks.png">
+<img src="/images/landmarks.png">
 
 5. Open the Python Interactor. Copy and paste the script below. Lines starting with the # character are comments that give you information on how the code is operating. They are ignored by the Python Interactor.  
 
@@ -129,9 +129,59 @@ The image should now appear in standard anatomical alignment. In the 3D viewer, 
 slicer.vtkSlicerTransformLogic().hardenTransform(V)
 ```
 
-<img src="https://github.com/SlicerMorph/S_2019/blob/master/Lab08/images/aligned.png">
+<img src="images/aligned.png">
 
-## Example 2: Reading a segmentation and creating a histogram.
+## Example 2: Segmenting a folder of volumes with a single threshold
+In this section, you will generate a mesh for each volume image in a folder using a threshold value you supply.
+
+1. Create a local test folder and transfer 3 Gorilla skull volume images in NRRD.GZ format from the sample data set provided.
+
+2. Open Slicer. Copy the script below and modify  **inputDirectory** to your local directory of volume images and the **outputDirectory** to the location where the meshes will be stored. Past the script below into the Python Interactor.
+
+```
+#Setup
+import os
+inputDirectory = '\my\local\inputDirectory'
+outputDirectory =  '\my\local\inputDirectory'
+stepThreshold = 
+extension = '.nii.gz' 
+
+renderLogic = slicer.modules.volumerendering.logic()
+
+#Walk through each file in the input directory
+for file in os.listdir(inputDirectory):
+  if file.endswith(extension):
+    inputFile = os.path.join(inputDirectory, file)
+    volumeNode =slicer.util.loadVolume(inputFile)
+    labelVolumeNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLLabelMapVolumeNode")
+    slicer.vtkSlicerVolumesLogic().CreateLabelVolumeFromVolume(slicer.mrmlScene, labelVolumeNode, volumeNode)
+    voxelArray = slicer.util.arrayFromVolume(volumeNode)
+    labelVoxelArray = slicer.util.arrayFromVolume(labelVolumeNode)
+    labelVoxelArray[voxelArray >= stepThreshold] = 100
+    labelVoxelArray[voxelArray < stepThreshold] = 0
+    slicer.util.arrayFromVolumeModified(labelVolumeNode)
+    imageName = volumeNode.GetName()
+    segmentationNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLSegmentationNode', imageName)
+    slicer.modules.segmentations.logic().ImportLabelmapToSegmentationNode(labelVolumeNode, segmentationNode)
+    segmentID = segmentationNode.GetSegmentation().GetNthSegmentID(0)
+    polydata=vtk.vtkPolyData()
+    slicer.modules.segmentations.logic().GetSegmentClosedSurfaceRepresentation(segmentationNode, segmentID, polydata,1)
+    #create a new model with the segment polydata
+    modelNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLModelNode',imageName)
+    modelNode.CreateDefaultDisplayNodes()
+    modelNode.SetAndObservePolyData(polydata)
+    outputFilename = os.path.join(outputDirectory, imageName + '.ply')
+    slicer.util.saveNode(modelNode, outputFilename) 
+    slicer.mrmlScene.RemoveNode(labelVolumeNode)
+    slicer.mrmlScene.RemoveNode(volumeNode)
+    slicer.mrmlScene.RemoveNode(segmentationNode)
+    slicer.mrmlScene.RemoveNode(modelNode) 
+```
+3. You can now load the meshes from the output directory into Slicer and verify that they were segmented properly.
+<img src="/images/volumeForScript.png">
+<img src="/images/meshFromScript.png">
+
+## Example 3: Reading a segmentation and creating a histogram.
 In this section, you will use a segmentation to mask an image, calculate regional statistics and plot a histogram for each segment. This example is based on a tutorial [provided by Andras Lasso](https://gist.github.com/lassoan/2f5071c562108dac8efe277c78f2620f). 
 
 In this example, sample patches from different tissue types in a brain scan will be identified using segment labels. The "Tumor" label will be used to identify a patch of tumor tissue and the "Brain" label will identify patches of brain tissue unaffected by the tumor.  The "Background" label will be used to sample multiple tissue types. Comparing the histogram plots will allow analysis of the differences in voxel intensities between the "Tumor" and "Brain" regions, as well as how these compare to the overall distribution of values in the scan represented by the the "Background" regions.  
@@ -140,7 +190,7 @@ In this example, sample patches from different tissue types in a brain scan will
 
 2. Open the Segment Editor. Create three segments: Tumor, Brain, and Background. Select the spherical paint brush to place the segments on the brain volume. The colors of the segments can be adjusted for better visibility by clicking on the color boxes in the Segment Editor table.
 
-<img src="https://github.com/SlicerMorph/S_2019/blob/master/Lab08/images/segments.png">
+<img src="/images/segments.png">
 
 3. Use the following code snippet to iteratively mask the image with each segment and calculate the corresponding histogram. You should see an output plot of the histograms for each segment. This plot should show that the tumor tissue histogram has a peak at a higher voxel intensity value than the unaffected brain tissue and background samples.  
 ```
@@ -209,7 +259,7 @@ slicer.modules.plots.logic().ShowChartInLayout(plotChartNode)
 slicer.mrmlScene.RemoveNode(maskedVolume)
 slicer.mrmlScene.RemoveNode(segmentEditorNode)
 ```
-<img src="https://github.com/SlicerMorph/S_2019/blob/master/Lab08/images/histogram.png">
+<img src="/images/histogram.png">
 
 4. Bonus: Generate or load your own segmentation. Reuse the code snippet from Step 3 to calculate segment histograms.
 
