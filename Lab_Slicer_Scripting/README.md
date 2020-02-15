@@ -7,12 +7,12 @@ This lab introduces simple Python scripts to preform custom image preprocessing 
 
 ## Example 1: Aligning volumes using landmarks (Frankfort alignment plane).
 The Frankfurt plane defines the standard anatomical position of the human skull. The plane passes through landmarks placed at the left orbitale and the left and right tragus. Alignment with the Frankfurt plane is a standard preprocessing step when analyzing human face, brain, or head images.
-<img src="/images/Frankfurt.png">
+<img src="./images/Frankfurt.png">
 
 1. Download the sample data using [this link](https://github.com/SlicerMorph/S_2019/raw/master/Lab08/data/MRHead.nrrd). It contains a CT scan of a human head that is out of the standard alignment. 
 2. Open Slicer and load the data. In the Volume Rendering module, adjust the view properties. 
 
-<img src="/images/unaligned.png">
+<img src="./images/unaligned.png">
 
 3. Use the menu button on the top bar to initiate lanmark placement mode. Place three landmarks on the face at the left orbitale (lowest point of the left eye socket) and the left and right tragus (upper margin of each ear canal). It's ok to approximate for this exercise. 
 
@@ -21,7 +21,7 @@ The Frankfurt plane defines the standard anatomical position of the human skull.
     * left tragus: **poL**
     * right tragus: **poR**
 
-<img src="/images/landmarks.png">
+<img src="./images/landmarks.png">
 
 5. Open the Python Interactor. Copy and paste the script below. Lines starting with the # character are comments that give you information on how the code is operating. They are ignored by the Python Interactor.  
 
@@ -129,7 +129,7 @@ The image should now appear in standard anatomical alignment. In the 3D viewer, 
 slicer.vtkSlicerTransformLogic().hardenTransform(V)
 ```
 
-<img src="images/aligned.png">
+<img src="./images/aligned.png">
 
 ## Example 2: Segmenting a folder of volumes with a single threshold
 In this section, you will generate a mesh for each volume image in a folder using a threshold value you supply.
@@ -178,8 +178,8 @@ for file in os.listdir(inputDirectory):
     slicer.mrmlScene.RemoveNode(modelNode) 
 ```
 3. You can now load the meshes from the output directory into Slicer and verify that they were segmented properly.
-<img src="/images/volumeForScript.png">
-<img src="/images/meshFromScript.png">
+<img src="./images/volumeForScript.png">
+<img src="./images/meshFromScript.png">
 
 ## Example 3: Reading a segmentation and creating a histogram.
 In this section, you will use a segmentation to mask an image, calculate regional statistics and plot a histogram for each segment. This example is based on a tutorial [provided by Andras Lasso](https://gist.github.com/lassoan/2f5071c562108dac8efe277c78f2620f). 
@@ -190,7 +190,7 @@ In this example, sample patches from different tissue types in a brain scan will
 
 2. Open the Segment Editor. Create three segments: Tumor, Brain, and Background. Select the spherical paint brush to place the segments on the brain volume. The colors of the segments can be adjusted for better visibility by clicking on the color boxes in the Segment Editor table.
 
-<img src="/images/segments.png">
+<img src="./images/segments.png">
 
 3. Use the following code snippet to iteratively mask the image with each segment and calculate the corresponding histogram. You should see an output plot of the histograms for each segment. This plot should show that the tumor tissue histogram has a peak at a higher voxel intensity value than the unaffected brain tissue and background samples.  
 ```
@@ -259,7 +259,7 @@ slicer.modules.plots.logic().ShowChartInLayout(plotChartNode)
 slicer.mrmlScene.RemoveNode(maskedVolume)
 slicer.mrmlScene.RemoveNode(segmentEditorNode)
 ```
-<img src="/images/histogram.png">
+<img src="./images/histogram.png">
 
 4. Bonus: Generate or load your own segmentation. Reuse the code snippet from Step 3 to calculate segment histograms.
 
