@@ -83,7 +83,7 @@ In this example, we will use the `Line profile` module to place a line and exami
 <img src="./images/lineProfile.png">
 
 ## Visualization: Displaying Mesh Data
-Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` Module. Fiducial points are automatically placed on the surface of the a loaded mesh and will be constrained to the surface when they are moved along it. The control points for other markups are also constrained to mesh surfaces when present, but the interpolated . 
+Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` module. Fiducial points are automatically placed on the surface of the a loaded mesh and will be constrained to the surface when they are moved. The control points for other markups are also constrained to mesh surfaces when present. 
 
 ## Example 3: Displaying a Mesh and resampling a curve on the surface
 1. Load the Gorilla Skull Reference Model under the SlicerMorph tab of the `Sample Data` module (you will need SLicerMorph installed to see this option in the menu).
