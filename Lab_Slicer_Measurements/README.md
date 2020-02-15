@@ -97,13 +97,13 @@ Mesh data in Slicer is displayed using the `Models` Module. It can not be render
 3. Open the `Models` module. Experiment with changing the color and opacity of the skull.
 <img src="./images/Models.png">
 
-4. Select open curve placement mode from the upper menu bar and place a curve between landmarks **35** and **42** using approximately 10 points. Note that the control points are snapped to the mesh, but the curve itself may lie above or below the mesh surface. In the nem=
+4. Select open curve placement mode from the upper menu bar and place a curve between landmarks **35** and **42** using approximately 10 points. Note that the control points are snapped to the mesh, but the curve itself may lie above or below the mesh surface. 
 <img src="./images/curveOnMesh.png">
 
-5. Open the `Markups` module. Expand the Resample Menu. Select **Create a new markups curve** from the Output node selector and set the Number of resampled points to 50. In the **Constrain points to surface** menu, select the loaded gorilla mesh. Before resampling, confirm that the curve being resampled is selected as the active node in the `Markups` table. 
+5. Open the `Markups` module. Expand the Resample Menu. Select **Create a new markups curve** from the Output node selector and set the number of resampled points to 50. In the **Constrain points to surface** menu, select the loaded gorilla mesh. Before resampling, confirm that the curve to be resampled is selected as the active node in the `Markups` table. 
 <img src="./images/resampleOptions.png">
 
-Click the **Resample curve** button to generate a new open curve with 50 points constrained to the mesh surface. This results in a curve that is closer to the actual surface curvature. Note any difference in length between the original and resampled curves in the `Markups` table.
+Click the **Resample curve** button to generate a new open curve with 50 points constrained to the mesh surface. This results in a curve that is closer to the actual surface curvature than the original. Note any difference in length between the original and resampled curves reported in the `Markups` table.
 <img src="./images/newCurve.png">
 
 ## Visualization: Volume Rendering
