@@ -139,39 +139,43 @@ In this section, you will generate a mesh for each volume image in a folder usin
 2. Open Slicer. Copy the script below and modify  **inputDirectory** to your local directory of volume images and the **outputDirectory** to the location where the meshes will be stored. Past the script below into the Python Interactor.
 
 ```
-#Setup
+# Setup
 import os
 inputDirectory = '\my\local\inputDirectory'
-outputDirectory =  '\my\local\inputDirectory'
+outputDirectory =  '\my\local\outputDirectory'
 stepThreshold = 
 extension = '.nii.gz' 
 
 renderLogic = slicer.modules.volumerendering.logic()
 
-#Walk through each file in the input directory
+# Walk through each file in the input directory
 for file in os.listdir(inputDirectory):
   if file.endswith(extension):
     inputFile = os.path.join(inputDirectory, file)
     volumeNode =slicer.util.loadVolume(inputFile)
     labelVolumeNode = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLLabelMapVolumeNode")
     slicer.vtkSlicerVolumesLogic().CreateLabelVolumeFromVolume(slicer.mrmlScene, labelVolumeNode, volumeNode)
+    # Get voxel values as an array
     voxelArray = slicer.util.arrayFromVolume(volumeNode)
     labelVoxelArray = slicer.util.arrayFromVolume(labelVolumeNode)
     labelVoxelArray[voxelArray >= stepThreshold] = 100
     labelVoxelArray[voxelArray < stepThreshold] = 0
     slicer.util.arrayFromVolumeModified(labelVolumeNode)
     imageName = volumeNode.GetName()
+    # Set up a segmentation to seperate image from background 
     segmentationNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLSegmentationNode', imageName)
     slicer.modules.segmentations.logic().ImportLabelmapToSegmentationNode(labelVolumeNode, segmentationNode)
     segmentID = segmentationNode.GetSegmentation().GetNthSegmentID(0)
     polydata=vtk.vtkPolyData()
     slicer.modules.segmentations.logic().GetSegmentClosedSurfaceRepresentation(segmentationNode, segmentID, polydata,1)
-    #create a new model with the segment polydata
+    # Create a new model with the segment polydata
     modelNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLModelNode',imageName)
     modelNode.CreateDefaultDisplayNodes()
     modelNode.SetAndObservePolyData(polydata)
     outputFilename = os.path.join(outputDirectory, imageName + '.ply')
+    # Write the output mesh
     slicer.util.saveNode(modelNode, outputFilename) 
+    # Clean up
     slicer.mrmlScene.RemoveNode(labelVolumeNode)
     slicer.mrmlScene.RemoveNode(volumeNode)
     slicer.mrmlScene.RemoveNode(segmentationNode)
