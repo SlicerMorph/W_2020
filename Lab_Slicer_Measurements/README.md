@@ -78,7 +78,7 @@ In this example, we will use the `Line profile` module to place a line and exami
 
 2. Select the line markup mode and place a line along an area of interest in one of the slice views. This could also be done using an open or closed curve.
 
-3. Select the `Line Profile` module. Choose MRHead as the input volume, the line you created (by default named **L**) as the input line and choose the options to create a new output table and plot series. If needed, you can adjust the number of samples along the line using the Line resolution slider. Select the **Compute intensity profile** button and a line plot of the intensity volume intensity values sampled along the line. From the `Data` module you can also view the results as a table by clicking the eyeball next to the name of the table node created.
+3. Select the `Line Profile` module. Choose MRHead as the input volume, the line you created (by default named **L**) as the input line and choose the options to create a new output table and plot series. If needed, you can adjust the number of samples along the line using the Line resolution slider. Select the **Compute intensity profile** button and a line plot of the intensity volume intensity values sampled along the line will be displayed. From the `Data` module you can also view the results as a table by clicking the eyeball next to the name of the table node.
 
 <img src="./images/lineProfile.png">
 
