@@ -1,8 +1,8 @@
 # Lab 04 Slicer#4: Segmentation, mesh conversion, 3D printing 
 
-Welcome to Slicer Lab #4: Segmentation :scissors: :art: :gem:
+Welcome to Slicer Lab #4: Segmentation :scissors: :art: :gem: 
 
-## Segmentation
+## Segmentations
 
 Segmentation is one of the most useful things you can do with Slicer! It could be automated / semi-automated or fully manual! Most of the time, you will need a semi-automated approach. 
 
