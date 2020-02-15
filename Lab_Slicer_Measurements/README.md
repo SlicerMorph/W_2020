@@ -70,6 +70,7 @@ crossSectionSurfaceModel.GetDisplayNode().SetOpacity(0.5)
 crossSectionSurfaceModel.SetDescription("Area[mm2] = {0:.2f}".format(areaMm2))
 ```
  <img src="./images/VisualizingCurveArea.png">
+ 
 ## Example 2: Using the `Line Profile` module
 In this example, we will use the `Line profile` module to place a line and examine the intensities of a volume along the line.
 
@@ -79,7 +80,7 @@ In this example, we will use the `Line profile` module to place a line and exami
 
 3. Select the `Line Profile` module. Choose MRHead as the input volume, the line you created (by default named **L**) as the input line and choose the options to create a new output table and plot series. If needed, you can adjust the number of samples along the line using the Line resolution slider. Select the **Compute intensity profile** button and a line plot of the intensity volume intensity values sampled along the line. From the `Data` module you can also view the results as a table by clicking the eyeball next to the name of the table node created.
 
-<img src="./images/LineProfile.png">
+<img src="./images/lineProfile.png">
 
 ## Visualization: Displaying Mesh Data
 Mesh data in Slicer is displayed using the `Models` Module. It can not be rendered using the `Volume Render` Module. Fiducial points are automatically placed on the surface of the a loaded mesh and will be constrained to the surface when they are moved along it. The control points for other markups are also constrained to mesh surfaces when present, but the interpolated . 
@@ -103,7 +104,7 @@ Mesh data in Slicer is displayed using the `Models` Module. It can not be render
 <img src="./images/resampleOptions.png">
 
 Click the **Resample curve** button to generate a new open curve with 50 points constrained to the mesh surface. This results in a curve that is closer to the actual surface curvature. Note any difference in length between the original and resampled curves in the `Markups` table.
-<img src="./images/NewCurve.png">
+<img src="./images/newCurve.png">
 
 ## Visualization: Volume Rendering
 The `Volume Rendering` module provides interactive visualization of 3D image data. For full documentation of the panel and functions, see [here](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VolumeRendering#Panels_and_their_use).
