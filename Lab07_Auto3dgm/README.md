@@ -53,16 +53,11 @@ Click on **Start mesh visualization viewer**.
 
 You can select either **visualize phase 1 alignment** or **visualize phase 2 alignment**.
 The aligned shapes will be shown in a pop-up browser window. 
-:bangbang: Very Important :bangbang: make sure you click on **Start mesh visualization viewer** button after you finish the visualization. 
+:bangbang: Very Important :bangbang: make sure you click on **Stop mesh visualization viewer** button after you finish the visualization. 
 
-**For Mac users:**
-If you are using the customized version of 3D Slicer for this workshop, Slicer might crash. :trollface: 
-If that happens, please do the following instead.
+If you are using the customized version of 3D Slicer for this workshop, and Slicer crashes :trollface:, please do the following instead.
 
 Launch your browser and direct it to '' http://localhost:8000/index.html ''
-
-If you are using the latest nightly built or the stable version of 3D Slicer, there will be no problems. 
-
 
 ## 5. SlicerMorph with auto3dgm pseudolandmarks
 You can find the aligned pseudolandmarks (.fcsv files) in the output folder you specified Step 2. Go to folder *Phase 2* and then folder *aligned_landmarks*.
