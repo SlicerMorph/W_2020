@@ -27,7 +27,8 @@ Related [wiki](https://www.slicer.org/wiki/Documentation/4.10/SlicerApplication/
 * ``DICOM`` module which will be covered in detail in lab #2. 
 * SlicerMorph's ``ImageStacks`` module is the prefered way to load data from mCT scanner (will be covered in detail in lab #2).
   
-:pencil2: Use "Add Data" button, locate the data you copied in pre-lab, and add "CT-brain.nrrd" to your workspace. Once done, minimize Slicer, open a file explorer and locate the data folder from pre-lab. Drag-and-drop "MR-brain-T1.nrrd" and "MR-brain-T2.nrrd" into Slicer. Add them to your workspace. 
+
+:pencil2: Use "Add Data" button, locate the data you pulled from github, and add "CT-brain.nrrd" to your workspace. Once done, minimize Slicer, open a file explorer and locate the data folder from pre-lab. Drag-and-drop "MR-brain-T1.nrrd" and "MR-brain-T2.nrrd" into Slicer. Add them to your workspace. 
 
 :pencil2: Save a MRB of your workspace on your Desktop. Include all files. Clear your workspace by closing the scene (File > Close Scene or Ctrl+w). Load MRB by using "Add Data" button or drag-and-drop functionality. Is everything there?
   
