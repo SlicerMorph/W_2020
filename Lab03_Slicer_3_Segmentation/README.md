@@ -230,6 +230,8 @@ If your data is suitable for surface model conversion and your analysis needs me
 
 * also relevant ``Segment Mesher`` extension 
 
+## I have a 3D model, can I edit/segment that in Slicer?
+Yes you can. Use SlicerMorph's `ImportSurfaceToSegment` module and point out to a STL/PLY/VTK/OBJ file. This will create a labelmap representation of the 3D model and a single segment, which you can edit in `Segment Editor`. 
 
 ## Useful Links
 * [Discussion on how to segment thin structures](https://discourse.slicer.org/t/enhancing-orbital-walls-with-unsharp-mask-filtering/8440/)
