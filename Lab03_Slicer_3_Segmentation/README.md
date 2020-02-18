@@ -136,6 +136,10 @@ One of the most useful things you can do with Segmentation and LabelMaps is to m
 
 An important use case of masking is when you have more than one sample in your image and you want to create separate images via segmentation. See this [example](images/Grow_from_seeds_to_split_volumes.pdf)
 
+### Pro tip: 
+If you have installed **.Slicerrc.py** file from SlicerMorph, you should try the special keystrokes 
+  `~` and \` to cycle through the effects left and right without having to use the mouse.  
+
 ## Segment Statistics
 
 Now that you segmented your structure of interest, you may want to calculate some statistics. Don't worry, there is a module for that!
