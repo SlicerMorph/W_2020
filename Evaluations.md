@@ -1,4 +1,4 @@
-### Lectures
+### Lecturess
 1. [Introduction / 3D Imaging - Maga / Summers](https://docs.google.com/forms/d/1rOQAfD2RxNpgLQxNzKq25rQ49Xe4epyCDASPOvlCYn4)
 2. [Applied Imaging Concepts - Rolfe](https://docs.google.com/forms/d/1ibm4kW7BQo0lJHm2rNT3SaokznhrbeXSt-fFbNVjIz8)
 3. [Intro. to Statistical Shape Analysis I - Maga](https://docs.google.com/forms/d/1KXzcosPFhmWH1spTnaqQQHSmSMu_11GTkIdkTT8dsdQ)
