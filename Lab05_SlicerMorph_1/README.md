@@ -1,7 +1,5 @@
 # Lab 06 SlicerMorph # 1: Statistical Shape Analysis: Work with sample data 
 
-**Note: You need SlicerMorph extension and it is only available for Preview version. Also sample data becomes available after SlicerMorph is successfully installed**
-
 ## Preliminary Steps
 * Review your *Temp* and *Cache* folder settings under Preferences. Make sure these two point to folders that you can easily access (e.g., c:/SlicerTemp/ for Temp and C:/SlicerTemp/RemoteIO for cache folders)
 
@@ -31,7 +29,7 @@
 
 12. To visualize the PC1 vectors, go to the `Lollipop Plot Options` section and set the Vector One to PC1, then hit the `Lollipop Vector Plot` button. This set will automatically enable landmarks for the estimated mean shape and place eigenvector associated with PC1. By convention, this indicates how mean shape will change along the positive values of the selected PC. You should see that no other vector apart from LM25 is visible, thus PC1 (and almost all shape variation in this dataset) is influenced by LM25. This is a sign off trouble with this dataset. (HINT: If you toggle the `mean shape visibility` on and off, you will be able to see the other vectors.). Interact with the 3D window and note that you can zoom in/out as usual, and rotate. At this point, you can use either Viewport #1 or #2. 
 
-13. To further convience ourselves of the issue, you can get a sense of variance associated with each landmark by plotting them as either spheres (averaged across three dimensions), or ellipse (all axes are independently calculated). You can see that LM25 has variance orders of magnitude larger than the others, and it is pancake like appearance suggest that it is confined to two dimensions. So clearly LM25 in these four specimens have an issue, and is better left out of the analysis. (Please open the landmark file associated with one of the four specimens in Slicer and understand what the issue is whenever you have the chance)
+13. To further convince ourselves of the issue, you can get a sense of variance associated with each landmark by plotting them as either spheres (averaged across three dimensions), or ellipse (all axes are independently calculated). You can see that LM25 has variance orders of magnitude larger than the others, and it is pancake like appearance suggest that it is confined to two dimensions. So clearly LM25 in these four specimens have an issue, and is better left out of the analysis. (Please open the landmark file associated with one of the four specimens in Slicer and understand what the issue is whenever you have the chance)
 
 14. To repeat the analysis without LM25, first we need to clear our scene. Hit the `Reset Scene` button at the bottom of the GPA module and note that everything is disappeared. 
 
