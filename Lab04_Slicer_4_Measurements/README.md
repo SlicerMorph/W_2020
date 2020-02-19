@@ -135,6 +135,31 @@ The `Volume Rendering` module provides interactive visualization of 3D image dat
 4. Under the **Display** tab, click on the **Select a Preset** menu. This menu contains saved transfer functions that work well for common data types. Select **MRI Default** (row 4, column 5). Try adjusting the color and opacity functions of this suggested display setting.
 <img src="./images/colorPreset.png">
 
+
+### Casting your scalar volume to work with Visual Rendering
+
+Note: If your scalar volume data type is double (intensity range), you need to cast your image to an unsigned char (0-255) scalar volume. 
+1. Find ``Simple Filters`` module, search for RescaleIntensityImageFilter and set the output intensity range to 0-255.
+As output, create a new volume. This filter will map your original intensity range to 0-255 without truncating any intensities. 
+
+<img src="./images/ScalarVolumeCasting.PNG">
+
+2. Find ``Cast Scalar Volume`` module, set input volume to the output of previous module, and select your output data type, for this exercise, unsigned char which captures the intensity range 0-255. Hit apply.
+
+<img src="./images/ScalarVolumeCasting2.PNG">
+
+Compare the data types and scalar ranges of three volumes:
+
+<img src="./images/ScalarVolumeCasting3.PNG">
+<img src="./images/ScalarVolumeCasting4.PNG">
+<img src="./images/ScalarVolumeCasting5.PNG">
+
+
+Let's skip step 1 and run ``Cast Scalar Volume`` module directly on the CTBrain data, see what happens. Since we did not map the original intensity range to 0-255, it truncated anything below 0 and above 255, and we lost data.
+
+<img src="./images/ScalarVolumeCasting6.PNG">
+
+
 ## Example 5: SlicerAnimator (if time allows)
 The `Animator` module helps create and export animations in mp4 or GIF format. The animations are created by visualizing a volume and adjusting the rotation, ROI cropping, and rendering properties. A demo video of this module is also available [here](https://youtu.be/9GBekYcJR4E) .
 

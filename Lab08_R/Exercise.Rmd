@@ -218,7 +218,7 @@ summary(model)
 We have some week support that female and male gorillas may differ in their procrustes coordinate positions. Keep in mind that we have fairly low sample size and twice as many males than females. Let's see if accounting for skull size makes any difference:
 ```{r}
 model2 = procD.lm(coords~size + Sex, data=gdf)
-summary(model2)===
+summary(model2)
 ```
 If we account for skull size differences, male and female gorillas do not appear to be significantly different from each other. 
 
