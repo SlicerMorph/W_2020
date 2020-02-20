@@ -35,7 +35,7 @@ Let's skip step 1 and run ``Cast Scalar Volume`` module directly on the CTBrain 
 <img src="./images/ScalarVolumeCasting6.PNG">
 
 ## Volume Rendering
-## LabelMap vs Segmentation vs Volume (Rendering) vs Model
+## Segmentation vs Volume Rendering vs Model
 
 In 3D view, you can visualize a Segmentation, render a Volume or see a Model (mesh). Let's do all of these for the CTBrain data. 
 1) In ``Segment Editor`` module, segment the skull using Threshold tool (243 to max), and click on 'View 3D'. 
@@ -61,6 +61,18 @@ Let's talk about what's what.
 - You can export your segments as Models using ``Segmentations`` module. When you do this, it actually creates the points and polygons that is the surface mesh. Since surface meshes are not volumetric data, they are visible in the 3D View of the Slicer. But they are actual data structures you can save and modify in other mesh editor (or in Slicer to some extend). 
 
 Long story short, there are a lot of different things that can look like a Model in 3D View. Make sure you know what you are visualizing. 
+
+### LabelMaps
+
+A 'model' is one of the data structures you can create from segmentations. The other one is a 'LabelMap'. Models are 3D surface meshes that are a bunch of points and polygons (connectivity). If you want to stay in the volumetric realm, we are talking about LabelMaps. A label map is a volume (an image) with label values (segments) instead of intensities. 
+
+You can save the LabelMap as an image (.nrrd, .nii etc). If you don't forget to assign the master volume during export, it will have the same dimensions and spacing as your original volume. 
+
+Since a LabelMap is an image, it can only have one value per voxel, so if your segments are overlapping - then the one that comes later in the list will be the label at the intersection areas. 
+
+<img src="./images/labelmap.PNG">
+<img src="./images/labelmap2.PNG">
+
 
 ## Transforms
 ### Fiducial Registration
