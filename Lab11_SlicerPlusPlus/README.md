@@ -36,6 +36,32 @@ Let's skip step 1 and run ``Cast Scalar Volume`` module directly on the CTBrain 
 
 ## Volume Rendering
 ## LabelMap vs Segmentation vs Volume (Rendering) vs Model
+
+In 3D view, you can visualize a Segmentation, render a Volume or see a Model (mesh). Let's do all of these for the CTBrain data. 
+1) In ``Segment Editor`` module, segment the skull using Threshold tool (243 to max), and click on 'View 3D'. 
+2) Go to ``Segmentations`` module and export the skull segment as a Model. Slicer assigns the same color as your segment but to differentiate it from the Segmentation, let's change the color of the Model. Go to ``Models`` module and change the color of the skull model to red. 
+3) Go to ``Volume Rendering`` module and select the CTBrain as Active Volume, turn on the visibility by clicking the eye icon. Select one of the first two Presets. It should render the skull in bone window, which starts at 243 Hounsfield Units for CT data. (That's why we used this value in thresholding)
+
+Now you should have 3 different things on top of each other in 3D View. 
+
+<img src="./images/3D.PNG">
+
+<img src="./images/3D2.PNG">
+
+<img src="./images/3D3.PNG">
+
+Go to ``Data`` module and try turning the visibilty on and off for Model, Segmentation and Volume. 
+
+<img src="./images/3D4.PNG">
+
+
+Let's talk about what's what. 
+- A Segmentation is an abstract structure that you can visualize by clicking on the 'View 3D' button in ``Segment Editor``. This action DOES NOT create a surface mesh model. It is just a convenient way to see your Segmentation as you work on it. If you turn of smoothing (using the little menu next to the 'View 3D' button), you will see this 3D visualization doesn't have points and polygons, it is actually little cubes (voxels) from your volume (image) that are assigned the segment label. 
+- Similarly, a volume rendering is just a visualization of the 3D volume (image) you loaded. It assigns specific colors and opacities to specific intensities through a 'transfer function' that shows up as a nice 3D visualization. Presets are just known nice functions for common data modalities. Again, ``Volume Rendering`` module DOES NOT create a surface mesh model or a segmentation. It just VISUALIZES your image. 
+- You can export your segments as Models using ``Segmentations`` module. When you do this, it actually creates the points and polygons that is the surface mesh. Since surface meshes are not volumetric data, they are visible in the 3D View of the Slicer. But they are actual data structures you can save and modify in other mesh editor (or in Slicer to some extend). 
+
+Long story short, there are a lot of different things that can look like a Model in 3D View. Make sure you know what you are visualizing. 
+
 ## Transforms
 ### Fiducial Registration
 
