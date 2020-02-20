@@ -66,7 +66,11 @@ Long story short, there are a lot of different things that can look like a Model
 
 A 'model' is one of the data structures you can create from segmentations. The other one is a 'LabelMap'. Models are 3D surface meshes that are a bunch of points and polygons (connectivity). If you want to stay in the volumetric realm, we are talking about LabelMaps. A label map is a volume (an image) with label values (segments) instead of intensities. 
 
-You can save the LabelMap as an image (.nrrd, .nii etc). If you don't forget to assign the master volume during export, it will have the same dimensions and spacing as your original volume. Slicer adds "-label" suffix to LabelMaps automatically when saving, you can change this but when you load a LabelMap from the disk, if it has "-label" suffix in the filename, Slicer recognizes it as a LabelMap automatically. Otherwise, you need to expand the options in the Load menu and check the "LabelMap" checkbox to tell Slicer that the volume you are loading is a LabelMap.
+You can save the LabelMap as an image (.nrrd, .nii etc). If you don't forget to assign the master volume during export, it will have the same dimensions and spacing as your original volume. 
+
+<img src="./images/labelmap5.PNG">
+
+Slicer adds "-label" suffix to LabelMaps automatically when saving, you can change this but when you load a LabelMap from the disk, if it has "-label" suffix in the filename, Slicer recognizes it as a LabelMap automatically. Otherwise, you need to expand the options in the Load menu and check the "LabelMap" checkbox to tell Slicer that the volume you are loading is a LabelMap.
 
 <img src="./images/labelmap3.PNG">
 <img src="./images/labelmap4.PNG">
