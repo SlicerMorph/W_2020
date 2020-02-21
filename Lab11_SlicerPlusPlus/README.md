@@ -132,6 +132,7 @@ Another nice way to look at transformations and which objects are transformed (b
 
 ## SlicerMorph: Patch-based Semi-landmarking
 [SlicerMorph patched based semi-landmarking (Part 1)](https://www.youtube.com/watch?v=SArudRq-M4A)
+
 [SlicerMorph patched based semi-landmarking (Part 2)](https://www.youtube.com/watch?v=UD2tmFuaSJg)
 
 
