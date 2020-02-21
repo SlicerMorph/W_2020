@@ -170,6 +170,12 @@ plot(pca$pc.scores[,1], SM.pcs$PC.1, xlab = "GeoMorph", ylab = "SlicerMorph", ma
 ```
 Correlations are practically one (within the precision of floating points). Go ahead do the other PCs by changing the variables above. What about centroid size? (HINT: For SlicerMorph centroid size is contained with the output file OutputData.csv)
 
+Let's look at the variation explained by PCs:
+
+```{r}
+plotTangentSpace(gpa$coords)$pc.summary
+```
+
 ### Procrustes Anova.
 
 Recall our PC1 plot, which shows some group separation. Let's see if these groupings are related to the sexual dimorphism in gorilla. First we need to obtain the sex grouping variable for our samples. Please locate the sex.csv file under the Lab10 folder of our github repository, and enter the correct path to it below.
@@ -222,4 +228,6 @@ summary(model2)
 ```
 If we account for skull size differences, male and female gorillas do not appear to be significantly different from each other. 
 
-
+```{r}
+boxplot(gdf$size ~ gdf$Sex)
+```
