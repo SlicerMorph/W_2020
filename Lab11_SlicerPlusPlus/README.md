@@ -1,4 +1,12 @@
 # Slicer++
+
+- Volumes: Exporting Meshes
+- Volume Rendering
+- Transforms: Fiducial Registration
+- SlicerMorph: Animator / Exporting SM Animation
+- SlicerMorph: Patch-based Semi-landmarks
+- Extension Manager
+
 ## More About Volumes
 ### ``Volumes`` Module
 Start by loading CT-MR-Brain data from ``Sample Data`` module.
@@ -33,6 +41,13 @@ Compare the data types and scalar ranges of three volumes:
 Let's skip step 1 and run ``Cast Scalar Volume`` module directly on the CTBrain data, see what happens. Since we did not map the original intensity range to 0-255, it truncated anything below 0 and above 255, and we lost data.
 
 <img src="./images/ScalarVolumeCasting6.PNG">
+
+## Converting a Volume to a Mesh (Model)
+
+- Segment using ``Segment Editor``
+- Export as a Model using ``Segmentation``
+- Clean up using ``Surface Toolbox``
+- Save as ply, obj, or vtk
 
 ## Volume Rendering
 ## Segmentation vs Volume Rendering vs Model
