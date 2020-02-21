@@ -1,4 +1,4 @@
-# Lab 08 - Using the Python Interactor in Slicer
+# Lab 09 - Using the Python Interactor in Slicer
 This lab introduces simple Python scripts to preform custom image preprocessing tasks. These scripts can easily be customized and show how the functions in the Slicer application can be extended or automated using the Python interactor. 
 
 **Note 1: These examples assume you are starting in an empty scene. Please clear the scene before beginning each example.**
@@ -269,8 +269,8 @@ slicer.mrmlScene.RemoveNode(segmentEditorNode)
 
 5. Bonus: Get the maximim value from each segment by modifying the code from Step 3. You can try this on your own to test your understanding. The solution is posted below.
 
-  ```
- import numpy as np
+```
+import numpy as np
 masterVolumeNode = getNodesByClass('vtkMRMLScalarVolumeNode')
 masterVolumeNode=masterVolumeNode[0]
 segmentationNode = getNodesByClass('vtkMRMLSegmentationNode')
@@ -306,6 +306,7 @@ for segmentIndex in range(segmentationNode.GetSegmentation().GetNumberOfSegments
   effect.self().onApply()
   a = arrayFromVolume(maskedVolume)
   print(a.max())
-  ```
+
+```
 
 
