@@ -89,25 +89,25 @@ In this exercise, we will align two meshes using landmark (fiducial) registratio
 
 Download the zip file "fiducial.registration.data.zip" from GitHub. Load both meshes into Slicer. Make the rotated mesh red, and the other blue. 
 
-<img src="./images/fiducialreg.PNG">
+<img src="./images/fiducialreg.png">
 
 Find and open ``Fiducial Registration Wizard`` module. In the "From Fiducials" and "To Fiducials" sections, select "Create new MarkupsFiducial" option, and in the "Registration Result (from->to) Transform" section, select "Create new LinearTransform as" option and name the transform something like "red_to_blue". Make sure the "result transform type" is rigid, and "Point matching method" is automatic.
 
-<img src="./images/fiducialreg2.PNG">
+<img src="./images/fiducialreg2.png">
 
 Using the landmarking button in the "From Fiducials" section, place 4 landmarks on the red mesh. I recommend easy to identify landmarks like eye corners, nose etc. Using the landmarking button in the "To Fiducials" section, place the same 4 landmarks on the red mesh. In the "Preview Transform" section, check the "USNM174715-Cranium_rotated" and you should see another red mesh rotated on top the blue. 
 
-<img src="./images/fiducialreg3.PNG">
+<img src="./images/fiducialreg3.png">
 
 At this point, if you are satisfied with the registration, you can click "Apply" and this will apply the transform to the mesh but not "harden" it. If you click "Harden", it will permanently transform the mesh. If you are not satisfied, uncheck the box in the "Preview Transfrom" section, add more points to the list, preview again.
 
 Let's also load the landmarks for the rotated mesh, it should be in the sample data zip. Open the ``Transforms`` module and select the "red_to_blue" transform. You can investigate the transformation matrix and translation and rotation parameters. If you want to apply the same transform to the landmarks (or volumes), you can move them from "Transformable" list to "Transformed" list for a quick preview. This action is same as the "Apply" button in the ``Fiducial Registration Wizard``. You can also select the transformed objects and click on the "Harden" button to make the transformation permanent. 
 
-<img src="./images/fiducialreg4.PNG">
+<img src="./images/fiducialreg4.png">
 
 Another nice way to look at transformations and which objects are transformed (but not hardened) is the "Transform Hierarchy" tab in the ``Data`` module. If you have transforms applied but not hardened, they could be hardened here too.
 
-<img src="./images/fiducialreg5.PNG">
+<img src="./images/fiducialreg5.png">
 
 
 
