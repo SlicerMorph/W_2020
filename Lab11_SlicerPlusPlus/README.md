@@ -87,8 +87,7 @@ Since a LabelMap is an image, it can only have one value per voxel, so if your s
 
 In this exercise, we will align two meshes using landmark (fiducial) registration. 
 
-Download the zip file "fiducial.registration.data.zip" from GitHub. Load both meshes into Slicer. Make the rotated mesh red, and the other blue. 
-
+Download the MRB file "fiducial_registration.mrb" from GitHub. Load the scene to Slicer. There should be two meshes and one fiducial markup list. You can turn off the visibility of the landmarks if you'd like.
 <img src="./images/fiducialreg.png">
 
 Find and open ``Fiducial Registration Wizard`` module. In the "From Fiducials" and "To Fiducials" sections, select "Create new MarkupsFiducial" option, and in the "Registration Result (from->to) Transform" section, select "Create new LinearTransform as" option and name the transform something like "red_to_blue". Make sure the "result transform type" is rigid, and "Point matching method" is automatic.
@@ -101,7 +100,7 @@ Using the landmarking button in the "From Fiducials" section, place 4 landmarks 
 
 At this point, if you are satisfied with the registration, you can click "Apply" and this will apply the transform to the mesh but not "harden" it. If you click "Harden", it will permanently transform the mesh. If you are not satisfied, uncheck the box in the "Preview Transfrom" section, add more points to the list, preview again.
 
-Let's also load the landmarks for the rotated mesh, it should be in the sample data zip. Open the ``Transforms`` module and select the "red_to_blue" transform. You can investigate the transformation matrix and translation and rotation parameters. If you want to apply the same transform to the landmarks (or volumes), you can move them from "Transformable" list to "Transformed" list for a quick preview. This action is same as the "Apply" button in the ``Fiducial Registration Wizard``. You can also select the transformed objects and click on the "Harden" button to make the transformation permanent. 
+Let's also transform the landmarks for the rotated mesh. Open the ``Transforms`` module and select the "red_to_blue" transform. You can investigate the transformation matrix and translation and rotation parameters. If you want to apply the same transform to the landmarks (or volumes), you can move them from "Transformable" list to "Transformed" list for a quick preview. This action is same as the "Apply" button in the ``Fiducial Registration Wizard``. You can also select the transformed objects and click on the "Harden" button to make the transformation permanent. 
 
 <img src="./images/fiducialreg4.png">
 
