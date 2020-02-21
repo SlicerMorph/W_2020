@@ -127,5 +127,14 @@ Another nice way to look at transformations and which objects are transformed (b
 
 
 ## SlicerMorph: Animator 
+
+[How to record PC visualizations from SlicerMorph as animations](https://www.youtube.com/watch?v=gtHqhqaKeCU)
+
 ## SlicerMorph: Patch-based Semi-landmarking
+[SlicerMorph patched based semi-landmarking (Part 1)](https://www.youtube.com/watch?v=SArudRq-M4A)
+[SlicerMorph patched based semi-landmarking (Part 2)](https://www.youtube.com/watch?v=UD2tmFuaSJg)
+
+
+
+
 ## Extension Manager / Loading Extensions from github
