@@ -21,7 +21,8 @@ Switch to ``Volumes`` module to look at the properties of these images. Change y
 It's a good practice to check these for new volumes you load and make sure they are what you expect. 
 
 ### Rescale/Cast
-Note: If your scalar volume data type is double (intensity range), you need to cast your image to an unsigned char (0-255) scalar volume. 
+Note: If your scalar volume data type is double (intensity range), you may need to cast your image to an unsigned char (0-255) scalar volume. This will reduce the memory consumption of your dataset by 50% without changing the spatial resolution.
+
 1. Find ``Simple Filters`` module, search for RescaleIntensityImageFilter and set the output intensity range to 0-255.
 As output, create a new volume. This filter will map your original intensity range to 0-255 without truncating any intensities. 
 
