@@ -1,4 +1,4 @@
-# Lab 04 Slicer#4: Segmentation, mesh conversion, 3D printing 
+# Lab 04 Slicer#4: Segmentation, conversion to 3D models and beyond. 
 
 Welcome to Slicer Lab #4: Segmentation :scissors: :art: :gem: 
 
