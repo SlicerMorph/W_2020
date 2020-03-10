@@ -132,10 +132,11 @@ slicer.vtkSlicerTransformLogic().hardenTransform(V)
 <img src="./images/aligned.png">
 
 ## Example 2: Making an endocast from a skull:
-See Andras's example at: 
+See Andras's example at: https://discourse.slicer.org/t/volume-rendering-produces-block-of-white-noise/10572/32?u=muratmaga
 
 Code at: https://gist.github.com/lassoan/4d0b94bda52d5b099432e424e03aa2b1
-https://discourse.slicer.org/t/volume-rendering-produces-block-of-white-noise/10572/32?u=muratmaga
+
+<img src="https://aws1.discourse-cdn.com/standard17/uploads/slicer/original/2X/1/11971dd280adb825dbfb942b335fd521ac8bd259.jpeg">
 
 ## Example 3: Segmenting a folder of volumes with a single threshold
 In this section, you will generate a mesh for each volume image in a folder using a threshold value you supply.
