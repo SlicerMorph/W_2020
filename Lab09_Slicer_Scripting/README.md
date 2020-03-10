@@ -131,7 +131,13 @@ slicer.vtkSlicerTransformLogic().hardenTransform(V)
 
 <img src="./images/aligned.png">
 
-## Example 2: Segmenting a folder of volumes with a single threshold
+## Example 2: Making an endocast from a skull:
+See Andras's example at: 
+
+Code at: https://gist.github.com/lassoan/4d0b94bda52d5b099432e424e03aa2b1
+https://discourse.slicer.org/t/volume-rendering-produces-block-of-white-noise/10572/32?u=muratmaga
+
+## Example 3: Segmenting a folder of volumes with a single threshold
 In this section, you will generate a mesh for each volume image in a folder using a threshold value you supply.
 
 1. Create a local test folder and transfer 3 Gorilla skull volume images in NRRD.GZ format from the sample data set provided.
@@ -185,7 +191,7 @@ for file in os.listdir(inputDirectory):
 <img src="./images/volumeForScript.png">
 <img src="./images/meshFromScript.png">
 
-## Example 3: Reading a segmentation and creating a histogram.
+## Example 4: Reading a segmentation and creating a histogram.
 In this section, you will use a segmentation to mask an image, calculate regional statistics and plot a histogram for each segment. This example is based on a tutorial [provided by Andras Lasso](https://gist.github.com/lassoan/2f5071c562108dac8efe277c78f2620f). 
 
 In this example, sample patches from different tissue types in a brain scan will be identified using segment labels. The "Tumor" label will be used to identify a patch of tumor tissue and the "Brain" label will identify patches of brain tissue unaffected by the tumor.  The "Background" label will be used to sample multiple tissue types. Comparing the histogram plots will allow analysis of the differences in voxel intensities between the "Tumor" and "Brain" regions, as well as how these compare to the overall distribution of values in the scan represented by the the "Background" regions.  
