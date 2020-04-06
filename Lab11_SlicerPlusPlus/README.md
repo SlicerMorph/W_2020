@@ -1,6 +1,7 @@
 # Slicer++
 
 - Volumes: Exporting Meshes
+- Model2Model distance extension and color bars: Measuring effects of different thresholds/smoothing
 - Volume Rendering
 - Transforms: Fiducial Registration
 - SlicerMorph: Animator / Exporting SM Animation
