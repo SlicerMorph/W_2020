@@ -1,7 +1,7 @@
 # Lab Slicer #4: Measurements and Visualization 
 ## Overview of markups
 * Stable version of Slicer only supports fiducial markups 
-* Slicer Nightly and SlicerMorph versions add: lines, angles, ROIs, open and closed curves, and improved handling of large numbers of markups. 
+* Slicer Nightly and SlicerMorph versions add: lines, angles, ROIs, open and closed curves, and planes, as well as improved handling of large numbers of markups (thousands range). 
 <img src="./images/MarkupWidgets.png">
 
 * Updates to Markups module are ongoing so check back for updates
@@ -20,6 +20,9 @@ Place three points sequentially. This forms two vectors where the second point p
 
 **Open and closed curves:**
 Sequentially place points. A curve will be fit to the points and updated as additional points are added. If the closed curve is selected, the first and last points placed will be connected.
+
+**Planes:**
+To be added
 
 <img src="./images/MarkupTypes.png">
 
