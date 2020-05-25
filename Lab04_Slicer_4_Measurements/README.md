@@ -108,7 +108,7 @@ Click the **Resample curve** button to generate a new open curve with 50 points 
 
 ## Visualization: Volume Rendering
 The `Volume Rendering` module provides interactive visualization of 3D image data. For full documentation of the panel and functions, see [here](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VolumeRendering#Panels_and_their_use).
-* Only scalar volumes can be used for volume rendering. Vector volumes (eg jpg, png, bmp, or other classic 2D formats) can be converted to scalar volumes using the [VectorToScalarVolume module](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VectorToScalarVolume).
+* Only scalar volumes can be used for volume rendering. Vector volumes (eg jpg, png, bmp, or other classic 2D formats) can be converted to scalar volumes using the [VectorToScalarVolume module](https://www.slicer.org/wiki/Documentation/Nightly/Modules/VectorToScalarVolume). If you used SlicerMorph's `ImageStacks` module, vector to scalar conversion was done already at the time of import the data.
 * 3D Slicer uses volume ray casting to computes 2D images from 3D volumetric data sets. Unlike surface reconstruction, there is no estimation of object surfaces or segmentation.
 * The values displayed are calculated using a transfer function that incorporates voxel intensities, material properties, and illumination.
 * The opacity and color of the image can be adjusted by modifying their transfer functions in the `Volume Rendering` module.
