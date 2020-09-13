@@ -22,14 +22,14 @@ Switch to ``Volumes`` module to look at the properties of these images. Change y
 It's a good practice to check these for new volumes you load and make sure they are what you expect. 
 
 ### Rescale/Cast
-Note: If your scalar volume data type is double (intensity range), you may need to cast your image to an unsigned char (0-255) scalar volume. This will reduce the memory consumption of your dataset by 50% without changing the spatial resolution.
+Note: If your volume data scalar type is floating-point (double or float), you may want to cast it to integer (short or unsigned char) to reduce memory usage and make it improve compatibility with some processing methods. Double uses 64, float 32, short 16, unsigned char 8 bits of storage for each voxel, therefore conversion will reduce the memory consumption of your dataset by a factor of 2x-8x without changing the spatial resolution.
 
-1. Find ``Simple Filters`` module, search for RescaleIntensityImageFilter and set the output intensity range to 0-255.
-As output, create a new volume. This filter will map your original intensity range to 0-255 without truncating any intensities. 
+1. Find ``Simple Filters`` module, search for RescaleIntensityImageFilter and set the output intensity range to 0-255 (this works well for dry bone CT images; if the image also contains soft tissue then -1000 to 3000 range is recommended to approximately match Hounsfield units).
+As output, create a new volume. This filter will map your original intensity range without truncating any intensities. 
 
 <img src="./images/ScalarVolumeCasting.PNG">
 
-2. Find ``Cast Scalar Volume`` module, set input volume to the output of previous module, and select your output data type, for this exercise, unsigned char which captures the intensity range 0-255. Hit apply.
+2. Find ``Cast Scalar Volume`` module, set input volume to the output of previous module, and select your output data type, for this exercise, unsigned char which captures the intensity range 0-255 (short is recommended for CT with soft tissues). Hit apply.
 
 <img src="./images/ScalarVolumeCasting2.PNG">
 
