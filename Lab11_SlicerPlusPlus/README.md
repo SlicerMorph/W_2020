@@ -25,7 +25,7 @@ It's a good practice to check these for new volumes you load and make sure they 
 Note: If your volume data scalar type is floating-point (double or float), you may want to cast it to integer (short or unsigned char) to reduce memory usage and make it improve compatibility with some processing methods. Double uses 64, float 32, short 16, unsigned char 8 bits of storage for each voxel, therefore conversion will reduce the memory consumption of your dataset by a factor of 2x-8x without changing the spatial resolution.
 
 1. Find ``Simple Filters`` module, search for RescaleIntensityImageFilter and set the output intensity range to 0-255 (this works well for dry bone CT images; if the image also contains soft tissue then -1000 to 3000 range is recommended to approximately match Hounsfield units).
-As output, create a new volume. This filter will map your original intensity range without truncating any intensities. 
+As output, create a new volume. This filter will preserve high-order intensities differences representable in the target data type and while truncating low-order differences."
 
 <img src="./images/ScalarVolumeCasting.PNG">
 
